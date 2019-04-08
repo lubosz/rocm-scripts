@@ -318,3 +318,4 @@ make -j 8 2>&1 | tee -a $cwd/gromacs_build.log
 cd $dir1/gromacs/
 cd build
 make -j 8 check 2>&1 | tee -a $cwd/gromacs_test.log
+
