@@ -1,0 +1,33 @@
+sudo dpkg --purge hip_hcc
+sudo dpkg --purge hip_samples
+sudo dpkg --purge hip_doc
+sudo dpkg --purge hip_base
+sudo dpkg --purge hcc
+sudo dpkg --purge rocm-utils
+sudo dpkg --purge rocminfo
+sudo dpkg --purge rocm-profiler
+sudo dpkg --purge rocm-clang-ocl
+sudo dpkg --purge rocm-opencl-dev
+sudo dpkg --purge rocm-opencl
+sudo dpkg --purge rocm-device-libs
+sudo dpkg --purge rocr_debug_agent
+sudo dpkg --purge hsa-rocr-dev
+sudo dpkg --purge cxlactivitylogger
+sudo dpkg --purge rocprofiler-dev
+sudo dpkg --purge hsa-rocr-dev
+sudo dpkg --purge hsa-ext-rocr-dev
+sudo dpkg --purge hsakmt-roct-dev
+sudo dpkg --purge hsakmt-roct
+sudo dpkg --purge hsa-amd-aqlprofile
+
+
+sudo rm -rf /opt/rocm
+
+
+
+sudo dpkg -l | grep hsa
+sudo dpkg -l | grep hip
+sudo dpkg -l | grep hcc
+sudo dpkg -l | grep rocr
+sudo dpkg -l | grep rocm
+sudo dpkg -l | grep rock
