@@ -1,37 +1,37 @@
-sudo dpkg --purge hip_hcc
-sudo dpkg --purge hip_samples
-sudo dpkg --purge hip_doc
-sudo dpkg --purge hip_base
-sudo dpkg --purge hcc
-sudo dpkg --purge rocm-utils
-sudo dpkg --purge rocminfo
-sudo dpkg --purge rocm-profiler
-sudo dpkg --purge rocm-clang-ocl
-sudo dpkg --purge rocm-opencl-dev
-sudo dpkg --purge rocm-opencl
-sudo dpkg --purge rocm-device-libs
-sudo dpkg --purge rocr_debug_agent
-sudo dpkg --purge hsa-rocr-dev
-sudo dpkg --purge cxlactivitylogger
-sudo dpkg --purge rocprofiler-dev
-sudo dpkg --purge hsa-rocr-dev
-sudo dpkg --purge hsa-ext-rocr-dev
-sudo dpkg --purge hsakmt-roct-dev
-sudo dpkg --purge hsakmt-roct
-sudo dpkg --purge hsa-amd-aqlprofile
+echo AH64_uh1 | sudo dpkg --purge hip_hcc
+echo AH64_uh1 | sudo dpkg --purge hip_samples
+echo AH64_uh1 | sudo dpkg --purge hip_doc
+echo AH64_uh1 | sudo dpkg --purge hip_base
+echo AH64_uh1 | sudo dpkg --purge hcc
+echo AH64_uh1 | sudo dpkg --purge rocm-utils
+echo AH64_uh1 | sudo dpkg --purge rocminfo
+echo AH64_uh1 | sudo dpkg --purge rocm-profiler
+echo AH64_uh1 | sudo dpkg --purge rocm-clang-ocl
+echo AH64_uh1 | sudo dpkg --purge rocm-opencl-dev
+echo AH64_uh1 | sudo dpkg --purge rocm-opencl
+echo AH64_uh1 | sudo dpkg --purge rocm-device-libs
+echo AH64_uh1 | sudo dpkg --purge rocr_debug_agent
+echo AH64_uh1 | sudo dpkg --purge hsa-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge cxlactivitylogger
+echo AH64_uh1 | sudo dpkg --purge rocprofiler-dev
+echo AH64_uh1 | sudo dpkg --purge hsa-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge hsa-ext-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge hsakmt-roct-dev
+echo AH64_uh1 | sudo dpkg --purge hsakmt-roct
+echo AH64_uh1 | sudo dpkg --purge hsa-amd-aqlprofile
 
 
-sudo rm -rf /opt/rocm
-
-
-
-sudo dpkg -l | grep hsa
-sudo dpkg -l | grep hip
-sudo dpkg -l | grep hcc
-sudo dpkg -l | grep rocr
-sudo dpkg -l | grep rocm
-sudo dpkg -l | grep rock
+echo AH64_uh1 | sudo rm -rf /opt/rocm
 
 
 
-sudo reboot
+echo AH64_uh1 | sudo dpkg -l | grep hsa
+echo AH64_uh1 | sudo dpkg -l | grep hip
+echo AH64_uh1 | sudo dpkg -l | grep hcc
+echo AH64_uh1 | sudo dpkg -l | grep rocr
+echo AH64_uh1 | sudo dpkg -l | grep rocm
+echo AH64_uh1 | sudo dpkg -l | grep rock
+
+
+
+echo AH64_uh1 | sudo reboot
