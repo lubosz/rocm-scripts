@@ -31,3 +31,7 @@ sudo dpkg -l | grep hcc
 sudo dpkg -l | grep rocr
 sudo dpkg -l | grep rocm
 sudo dpkg -l | grep rock
+
+
+
+sudo reboot
