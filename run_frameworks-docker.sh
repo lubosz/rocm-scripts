@@ -32,7 +32,7 @@ export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 ./build/tools/caffe train --solver=examples/cifar10/cifar10_quick_solver.prototxt --gpu 0 2>&1 | tee $logs/hipcaffe_cifar10.log
 
 
-cd $dir/MLOpen/build_hip
+cd $dir/MLOpen/build
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
 make check -j16 2>&1| tee $logs/mlopen-ut.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
