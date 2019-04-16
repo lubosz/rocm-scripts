@@ -35,3 +35,14 @@ echo AH64_uh1 | sudo dpkg -l | grep rock
 
 
 echo AH64_uh1 | sudo reboot
+
+
+
+ wget http://rocm-ci.amd.com/job/compute-roc-master/10236/artifact/artifacts/compute-roc-master-10236.tar.bz2
+ 
+ 
+ tar -xvf compute-roc-master-10236.tar.bz2
+ 
+ 
+ aria2c deb.meta4 
+./utils/install.sh
