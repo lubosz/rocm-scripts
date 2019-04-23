@@ -34,8 +34,6 @@ echo AH64_uh1 | sudo dpkg -l | grep rock
 
 
 
-echo AH64_uh1 | sudo reboot
-
 mkdir 10271 && cd 10271
 
 
