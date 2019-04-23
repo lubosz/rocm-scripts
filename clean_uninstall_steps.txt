@@ -36,13 +36,22 @@ echo AH64_uh1 | sudo dpkg -l | grep rock
 
 echo AH64_uh1 | sudo reboot
 
+mkdir 10271 && cd 10271
 
 
- wget http://rocm-ci.amd.com/job/compute-roc-master/10236/artifact/artifacts/compute-roc-master-10236.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10271/artifact/artifacts/compute-roc-master-10271.tar.bz2
+
+
+cd ~/Desktop/package
+
+rm -rf *
+
+cp -rf ~/Desktop/10271/compute-roc-master-10271.tar.bz2 .
+
+tar -xvf compute-roc-master-10271.tar.bz2 
  
+aria2c deb.meta4
  
- tar -xvf compute-roc-master-10236.tar.bz2
- 
- 
- aria2c deb.meta4 
 ./utils/install.sh
+
+cp -rf ~/Desktop/package/* ~/Desktop/10271
