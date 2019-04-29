@@ -1,3 +1,5 @@
+echo AH64_uh1 | sudo dpkg --purge hipsparse
+echo AH64_uh1 | sudo dpkg --purge rocsparse
 echo AH64_uh1 | sudo dpkg --purge hip_hcc
 echo AH64_uh1 | sudo dpkg --purge hip_samples
 echo AH64_uh1 | sudo dpkg --purge hip_doc
@@ -32,26 +34,41 @@ echo AH64_uh1 | sudo dpkg -l | grep rocr
 echo AH64_uh1 | sudo dpkg -l | grep rocm
 echo AH64_uh1 | sudo dpkg -l | grep rock
 
+cd ~/Desktop/
+
+mkdir 10300 && cd 10300
 
 
-mkdir 10271 && cd 10271
-
-
-wget http://rocm-ci.amd.com/job/compute-roc-master/10271/artifact/artifacts/compute-roc-master-10271.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10300/artifact/artifacts/compute-roc-master-10300.tar.bz2
 
 
 cd ~/Desktop/package
 
 rm -rf *
 
-cp -rf ~/Desktop/10271/compute-roc-master-10271.tar.bz2 .
+cp -rf ~/Desktop/10300/compute-roc-master-10300.tar.bz2 .
 
-tar -xvf compute-roc-master-10271.tar.bz2 
+tar -xvf compute-roc-master-10300.tar.bz2 
  
 aria2c deb.meta4
- 
+
+cp -rf ~/Desktop/package/* ~/Desktop/10300
+
 ./utils/install.sh
 
-cp -rf ~/Desktop/package/* ~/Desktop/10271
-
 sudo reboot
+
+
+
+
+===================================================
+
+
+locate hcc 
+
+
+cd /var/lib/dpkg/info/
+ls
+ls -l hcc*
+sudo rm -rf hcc*
+sudo apt-get purge hcc
