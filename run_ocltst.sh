@@ -12,3 +12,8 @@ export LD_LIBRARY_PATH=.
 ./ocltst -m oclcompiler.so -A oclcompiler.exclude >> ~/Desktop/results/$(date +%d%m%Y)/oclcompiler.log
 ./ocltst -m oclgl.so -A oclgl.exclude >> ~/Desktop/results/$(date +%d%m%Y)/oclgl.log
 ./ocltst -m oclperf.so -A oclperf.exclude >> ~/Desktop/results/$(date +%d%m%Y)/oclperf.log
+
+
+cd ~/Desktop/results/$(date +%d%m%Y)
+
+grep -nir "Total Passed Tests" *log
