@@ -34,31 +34,38 @@ echo AH64_uh1 | sudo dpkg -l | grep rocr
 echo AH64_uh1 | sudo dpkg -l | grep rocm
 echo AH64_uh1 | sudo dpkg -l | grep rock
 
+
+================================================================
+
+
 cd ~/Desktop/
 
-mkdir 10327 && cd 10327
+mkdir package
+
+mkdir 10348 
+
+cd 10348
 
 
-wget http://rocm-ci.amd.com/job/compute-roc-master/10327/artifact/artifacts/compute-roc-master-10327.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10348/artifact/artifacts/compute-roc-master-10348.tar.bz2
 
 
 cd ~/Desktop/package
 
 rm -rf *
 
-cp -rf ~/Desktop/10327/compute-roc-master-10327.tar.bz2 .
+cp -rf ~/Desktop/10348/compute-roc-master-10348.tar.bz2 .
 
-tar -xvf compute-roc-master-10327.tar.bz2 
+tar -xvf compute-roc-master-10348.tar.bz2 
  
 aria2c deb.meta4
 
-cp -rf ~/Desktop/package/* ~/Desktop/10327
+cp -rf ~/Desktop/package/* ~/Desktop/10348
 
 ./utils/install.sh
 
 
 sudo reboot
-
 
 
 ===================================================
@@ -74,7 +81,7 @@ sudo rm -rf hcc*
 sudo apt-get purge hcc
 
 
-
 =====================================================
+
 
 git clone https://github.com/rbudidaamd/rocm-scripts
