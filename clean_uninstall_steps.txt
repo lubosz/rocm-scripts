@@ -1,3 +1,10 @@
+cd /var/lib/dpkg/info/
+ls -l hcc*
+sudo rm -rf hcc*
+echo AH64_uh1 | sudo apt-get purge hcc
+
+
+echo AH64_uh1 | sudo dpkg --purge rocsparse
 echo AH64_uh1 | sudo dpkg --purge hipsparse
 echo AH64_uh1 | sudo dpkg --purge rocsparse
 echo AH64_uh1 | sudo dpkg --purge hip_hcc
@@ -35,32 +42,32 @@ echo AH64_uh1 | sudo dpkg -l | grep rocm
 echo AH64_uh1 | sudo dpkg -l | grep rock
 
 
-================================================================
+
 
 
 cd ~/Desktop/
 
 mkdir package
 
-mkdir 10348 
+mkdir 10490 
 
-cd 10348
+cd 10490
 
 
-wget http://rocm-ci.amd.com/job/compute-roc-master/10348/artifact/artifacts/compute-roc-master-10348.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10490/artifact/artifacts/compute-roc-master-10490.tar.bz2
 
 
 cd ~/Desktop/package
 
 rm -rf *
 
-cp -rf ~/Desktop/10348/compute-roc-master-10348.tar.bz2 .
+cp -rf ~/Desktop/10490/compute-roc-master-10490.tar.bz2 .
 
-tar -xvf compute-roc-master-10348.tar.bz2 
+tar -xvf compute-roc-master-10490.tar.bz2 
  
 aria2c deb.meta4
 
-cp -rf ~/Desktop/package/* ~/Desktop/10348
+cp -rf ~/Desktop/package/* ~/Desktop/10490
 
 ./utils/install.sh
 
@@ -75,7 +82,6 @@ locate hcc
 
 
 cd /var/lib/dpkg/info/
-ls
 ls -l hcc*
 sudo rm -rf hcc*
 sudo apt-get purge hcc
@@ -85,3 +91,70 @@ sudo apt-get purge hcc
 
 
 git clone https://github.com/rbudidaamd/rocm-scripts
+
+
+
+======================================================
+
+
+export PYTORCH_TEST_WITH_ROCM=1
+
+python test/run_test.py --exclude autograd --verbose
+
+vi .jenkins/caffe2/bench.sh
+
+
+
+
+#Run Caffe2 and pyTorch Tests
+=============================
+
+cd /home/caffe2/
+.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench.log
+.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test.log
+
+
+cd /home/pytorch/
+PYTORCH_TEST_WITH_ROCM=1 python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test.log
+
+
+
+
+
+
+Radeon VII Coverage
+-------------------
+
+hip
+miOpen
+TensorFlow
+OpenCL 5 Apps
+
+
+MI25 Coverage
+-------------
+
+hip
+Mathlibs
+Frameworks
+TF
+Caffe2
+pyTorch
+OpenCL WF + OCLtst
+OpenCL Apps
+
+GFX803
+------
+
+OpenCL WF and OCLtst
+OpenCL Apps
+
+
+
+
+cd ~/Desktop/conformance
+
+nohup ./run_conformance.py opencl_conformance_tests_wimpyfull.csv CL_DEVICE_TYPE_GPU &
+
+tail -f nohup.out
+

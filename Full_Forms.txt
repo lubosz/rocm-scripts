@@ -1,0 +1,14 @@
+Tech
+====
+
+xGMI - inter-chip Global Memory Interconnect
+RDMA - Remote Direct Memory Access
+
+
+
+Regular
+=======
+
+RET - ROCm Enablement Tool
+BKC - Best Known Configuration
+

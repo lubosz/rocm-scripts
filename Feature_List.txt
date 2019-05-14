@@ -1,0 +1,34 @@
+Feature List
+
+2.4
+
+Phantom generic request on improvement/enhancements
+[A+A] LMS for Tensorflow
+[Tensorflow] TF 2.0 support	
+[BLAS] [Tensile] Tensile Optimization and Testing Tasks
+Feature: [Sugon] rocSparse Optimization on Vega20
+Feature:MLSE XGMI enablement
+
+2.5
+
+[RET][v1.0]Integrate RET with ROCm
+OpenMPI : UCX 1.6 support
+[Vega20] BFloat16 GEMM in rocBLAS/Tensile
+[MLPerf] Performance
+[Phantom] [FBA-50]Additional information required in rocm-smi
+Support XGMI topology auto discovery
+Enable RCCL2
+External FBA-44 Provide rocm_smi_lib equivalent to nvml api
+[Pytorch] mgpu functional Support (CPU aggregation/Data Parallel)
+[MLSE] rocSparse Optimization on Vega20
+[Distro] CentOS 7.5 Custom Support for Phantom
+[rocFFT] Feature Enhancements
+[RCCL] Fine Grained VRAM Support
+[BLAS] [Tensile] Tensile Optimization and Testing Tasks
+[Thrust] Functional Support on Vega20
+Support overlapping kernel execution in same HIP stream
+MLSE:Feature:RDMA(MPI) Optimization on Vega20
+[RAS HBM/ECC]: functional parity with Vega10
+Feature:MLSE XGMI enablement
+
+

@@ -1,0 +1,652 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>INTERNAL</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\.";
+    mso-displayed-thousand-separator:"\,";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#208028" height="29">
+        <td colspan="8">
+            <img src="http://ontrack-internal.amd.com/jira-logo-scaled.png" width="80" height="29" border="0" alt="INTERNAL">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            <a href="http://ontrack-internal.amd.com/issues/?jql=project+in+%28SWDEV%2C+HSADBG%2C+HCSWAP%2C+LIGHTNING%2C+KFD%2C+SCOCLHSA%29+AND+issuetype+%3D+Feature+AND+labels+%3D+ROCm2.0">INTERNAL</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            Displaying <strong>23</strong> issues at <strong>09/May/19 10:10 AM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                            <issuetable-web-component>
+                <table id="issuetable" class="hide-carrot" border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                            Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                            Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                            Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                            Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                            Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                            Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                            Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                            Reporter
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow1210647" rel="1210647" data-issuekey="SWDEV-170485" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-170485" href="http://ontrack-internal.amd.com/browse/SWDEV-170485">SWDEV-170485</a>
+</td>
+                                            <td class="summary"><p>
+                MLSE: Feature: 48 bit virtual addressing
+    </p>
+</td>
+                                            <td class="assignee">            Pasham, Sai-poorna
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 07/Nov/18 2:54 AM </td>
+                                            <td class="updated"> 21/Dec/18 6:50 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1191926" rel="1191926" data-issuekey="SWDEV-167509" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-167509" href="http://ontrack-internal.amd.com/browse/SWDEV-167509">SWDEV-167509</a>
+</td>
+                                            <td class="summary"><p>
+                [MLSE]: Feature: MIVision production release
+    </p>
+</td>
+                                            <td class="assignee">            Kumar, Sudheer
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 06/Oct/18 12:25 AM </td>
+                                            <td class="updated"> 21/Dec/18 6:54 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1150842" rel="1150842" data-issuekey="SWDEV-167388" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-167388" href="http://ontrack-internal.amd.com/browse/SWDEV-167388">SWDEV-167388</a>
+</td>
+                                            <td class="summary"><p>
+                DGEMM and DTRSM Optimization [Sugon]
+    </p>
+</td>
+                                            <td class="assignee">            Mason, Chris
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Analyzed&lt;/span&gt;">Analyzed</span>    </td>
+                                            <td class="created"> 24/Jul/18 8:20 PM </td>
+                                            <td class="updated"> 09/May/19 2:20 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1183658" rel="1183658" data-issuekey="SWDEV-165972" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-165972" href="http://ontrack-internal.amd.com/browse/SWDEV-165972">SWDEV-165972</a>
+</td>
+                                            <td class="summary"><p>
+                Feature : HGEMM and multi-precision
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 20/Sep/18 8:36 PM </td>
+                                            <td class="updated"> 08/Apr/19 1:42 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1183647" rel="1183647" data-issuekey="SWDEV-165968" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-165968" href="http://ontrack-internal.amd.com/browse/SWDEV-165968">SWDEV-165968</a>
+</td>
+                                            <td class="summary"><p>
+                [PyTorch/Caffe2] with Vega20 Support - single gpu, no fp16 nor int8
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Implemented&lt;/span&gt;">Implemented</span>    </td>
+                                            <td class="created"> 20/Sep/18 8:24 PM </td>
+                                            <td class="updated"> 09/Jan/19 4:37 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1183075" rel="1183075" data-issuekey="SWDEV-165855" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-165855" href="http://ontrack-internal.amd.com/browse/SWDEV-165855">SWDEV-165855</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: Profiler
+    </p>
+</td>
+                                            <td class="assignee">            Shcherbakov, Evgeny
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 20/Sep/18 1:01 AM </td>
+                                            <td class="updated"> 11/Mar/19 7:10 PM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1183067" rel="1183067" data-issuekey="SWDEV-165852" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-165852" href="http://ontrack-internal.amd.com/browse/SWDEV-165852">SWDEV-165852</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: OpenCL 2.0 support
+    </p>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 20/Sep/18 12:50 AM </td>
+                                            <td class="updated"> 09/Jan/19 10:15 PM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1181097" rel="1181097" data-issuekey="SWDEV-165486" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-165486" href="http://ontrack-internal.amd.com/browse/SWDEV-165486">SWDEV-165486</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: Machine Learning Benchmarks support
+    </p>
+</td>
+                                            <td class="assignee">            Pasham, Sai-poorna
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 17/Sep/18 2:42 PM </td>
+                                            <td class="updated"> 12/Oct/18 5:03 PM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Pasham, Sai-poorna
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1174804" rel="1174804" data-issuekey="SWDEV-164431" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-164431" href="http://ontrack-internal.amd.com/browse/SWDEV-164431">SWDEV-164431</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: rocSparse (functional) - ROCm release
+    </p>
+</td>
+                                            <td class="assignee">            Mason, Chris
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 06/Sep/18 2:13 AM </td>
+                                            <td class="updated"> 07/May/19 12:31 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1174783" rel="1174783" data-issuekey="SWDEV-164422" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-164422" href="http://ontrack-internal.amd.com/browse/SWDEV-164422">SWDEV-164422</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: rocALUTION production release
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Implemented&lt;/span&gt;">Implemented</span>    </td>
+                                            <td class="created"> 06/Sep/18 1:53 AM </td>
+                                            <td class="updated"> 05/Dec/18 2:24 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167613" rel="1167613" data-issuekey="SWDEV-163102" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163102" href="http://ontrack-internal.amd.com/browse/SWDEV-163102">SWDEV-163102</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: HGEMM and Multi-precision support for Vega20
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 23/Aug/18 7:48 AM </td>
+                                            <td class="updated"> 06/Nov/18 9:12 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167607" rel="1167607" data-issuekey="SWDEV-163100" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163100" href="http://ontrack-internal.amd.com/browse/SWDEV-163100">SWDEV-163100</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: Deprecation of C++ Amp Support
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 23/Aug/18 7:35 AM </td>
+                                            <td class="updated"> 06/Nov/18 10:55 AM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167598" rel="1167598" data-issuekey="SWDEV-163097" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163097" href="http://ontrack-internal.amd.com/browse/SWDEV-163097">SWDEV-163097</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: TF fp16 support for Vega20
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 23/Aug/18 7:16 AM </td>
+                                            <td class="updated"> 20/Dec/18 2:41 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167588" rel="1167588" data-issuekey="SWDEV-163093" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163093" href="http://ontrack-internal.amd.com/browse/SWDEV-163093">SWDEV-163093</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: MLSE: Update TF multi-gpu with Vega20 support
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Implemented&lt;/span&gt;">Implemented</span>    </td>
+                                            <td class="created"> 23/Aug/18 6:08 AM </td>
+                                            <td class="updated"> 13/Dec/18 9:48 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167586" rel="1167586" data-issuekey="SWDEV-163092" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163092" href="http://ontrack-internal.amd.com/browse/SWDEV-163092">SWDEV-163092</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: WX9100 official support of ROCm
+    </p>
+</td>
+                                            <td class="assignee">            Pasham, Sai-poorna
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 23/Aug/18 5:57 AM </td>
+                                            <td class="updated"> 21/Sep/18 1:08 AM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167511" rel="1167511" data-issuekey="SWDEV-163079" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163079" href="http://ontrack-internal.amd.com/browse/SWDEV-163079">SWDEV-163079</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: ROCm Validation Suite (RVS) Tool
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Rejected&lt;/span&gt;">Rejected</span>    </td>
+                                            <td class="created"> 23/Aug/18 2:45 AM </td>
+                                            <td class="updated"> 08/Feb/19 2:31 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167499" rel="1167499" data-issuekey="SWDEV-163074" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163074" href="http://ontrack-internal.amd.com/browse/SWDEV-163074">SWDEV-163074</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: Ubuntu 18.04.1 Support
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 23/Aug/18 2:35 AM </td>
+                                            <td class="updated"> 02/Apr/19 10:18 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1167490" rel="1167490" data-issuekey="SWDEV-163069" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-163069" href="http://ontrack-internal.amd.com/browse/SWDEV-163069">SWDEV-163069</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: RHEL/CentOS 7.6 Support
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Closed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is considered finished, the resolution is correct.&lt;/span&gt;">Closed</span>    </td>
+                                            <td class="created"> 23/Aug/18 2:21 AM </td>
+                                            <td class="updated"> 02/Apr/19 10:07 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1163398" rel="1163398" data-issuekey="SWDEV-162376" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-162376" href="http://ontrack-internal.amd.com/browse/SWDEV-162376">SWDEV-162376</a>
+</td>
+                                            <td class="summary"><p>
+                MLSE Feature: [Sugon][V20]Support for hipStreamCreateWithPriority
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 15/Aug/18 7:27 AM </td>
+                                            <td class="updated"> 29/Nov/18 3:15 AM </td>
+                                            <td class="priority">           Undefined
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1160637" rel="1160637" data-issuekey="SWDEV-161913" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-161913" href="http://ontrack-internal.amd.com/browse/SWDEV-161913">SWDEV-161913</a>
+</td>
+                                            <td class="summary"><p>
+                MLSE: Feature: Improve async 2D mem copy
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 09/Aug/18 11:16 PM </td>
+                                            <td class="updated"> 29/Apr/19 12:28 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1115533" rel="1115533" data-issuekey="SWDEV-154521" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-154521" href="http://ontrack-internal.amd.com/browse/SWDEV-154521">SWDEV-154521</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: RCCL 1.x in ROCm build
+    </p>
+</td>
+                                            <td class="assignee">            Mason, Chris
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Opened&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;The issue is open and ready for the assignee to start work on it.&lt;/span&gt;">Opened</span>    </td>
+                                            <td class="created"> 24/May/18 2:54 AM </td>
+                                            <td class="updated"> 13/Dec/18 11:44 PM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1115527" rel="1115527" data-issuekey="SWDEV-154518" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-154518" href="http://ontrack-internal.amd.com/browse/SWDEV-154518">SWDEV-154518</a>
+</td>
+                                            <td class="summary"><p>
+                Feature: OpenMPI : UCX 1.4 support
+    </p>
+</td>
+                                            <td class="assignee">            Elder, Christina
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Analyzed&lt;/span&gt;">Analyzed</span>    </td>
+                                            <td class="created"> 24/May/18 2:50 AM </td>
+                                            <td class="updated"> 23/Apr/19 9:02 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+
+
+                <tr id="issuerow1111527" rel="1111527" data-issuekey="SWDEV-153855" class="issuerow">
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SWDEV-153855" href="http://ontrack-internal.amd.com/browse/SWDEV-153855">SWDEV-153855</a>
+</td>
+                                            <td class="summary"><p>
+                Kubernetes support for ROCm1.9
+    </p>
+</td>
+                                            <td class="assignee">            Visvanathan, Vasudevan
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Implemented&lt;/span&gt;">Implemented</span>    </td>
+                                            <td class="created"> 17/May/18 12:29 AM </td>
+                                            <td class="updated"> 13/Dec/18 10:19 AM </td>
+                                            <td class="priority">           P2 (Must Solve)
+    </td>
+                                            <td class="reporter">            Elder, Christina
+    </td>
+                    </tr>
+                </tbody>
+    </table>
+    </issuetable-web-component>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="8"><font size="1">
+        Generated at Thu May 09 00:40:02 EDT 2019 by Chundi, Surendra babu using JIRA 7.6.6#76008-sha1:5b9e291cba4587083e3e7036e223342ed844fdaf.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
