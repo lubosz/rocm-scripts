@@ -158,3 +158,34 @@ nohup ./run_conformance.py opencl_conformance_tests_wimpyfull.csv CL_DEVICE_TYPE
 
 tail -f nohup.out
 
+
+
+
+
+Install the docker :
+====================
+
+sudo apt-get -y install apt-transport-https ca-certificates curl
+curl -fsSL https://get.docker.com/ | sh
+sudo systemctl start docker
+sudo systemctl status docker
+sudo systemctl enable docker
+
+Login to the docker:
+====================
+
+sudo docker login
+
+username/password : rocmqa/AH64_uh1
+
+Pull the docker image
+=====================
+
+FAIL DOCKER :sudo docker pull rocmqa/tf1.13-10271-py3:ub16.04
+
+PASS DOCKER :sudo docker pull rocmqa/tf1.13-10236-py3:ub16.04
+
+Run the Docker Container of this image:
+=======================================
+
+FAIL DOCKER : sudo docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add video -v $HOME/dockerx:/dockerx sudo docker pull rocmqa/tf1.13-10271-py3:ub16.04
