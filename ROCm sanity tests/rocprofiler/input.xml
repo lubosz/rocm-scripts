@@ -1,0 +1,12 @@
+<metric name="GRBM_COUNT,GRBM_GUI_ACTIVE,SQ_WAVES,SQ_INSTS_VALU,SQ_INSTS_VMEM_WR,SQ_INSTS_VMEM_RD,SQ_INSTS_SALU,SQ_INSTS_SMEM,SQ_INSTS_FLAT,SQ_INSTS_FLAT_LDS_ONLY,TA_TA_BUSY[0],TA_FLAT_READ_WAVEFRONTS[0],TCC_HIT[0],TCC_MISS[0]"></metric>
+<trace name="SQTT">
+	<parameters
+      	TARGET_CU=0
+        ></parameters>
+</trace>
+<trace name="HSA">
+        <parameters
+	        api="hsa_init hsa_shut_down hsa_memory_allocate">
+        </parameters>
+</trace>
+				

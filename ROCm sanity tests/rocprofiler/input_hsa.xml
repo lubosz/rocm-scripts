@@ -1,0 +1,6 @@
+<trace name="HSA">
+        <parameters
+	        api="hsa_agent_get_info hsa_signal_create hsa_signal_destroy">
+        </parameters>
+</trace>
+				

@@ -1,0 +1,21 @@
+RPL: on '181210_112850' from '/opt/rocm/rocprofiler' in '/mnt/ROCm-TestApps/rocprofiler/scripbk'
+RPL: profiling '/home/taccuser/SimpleConvolution/SimpleConvolution_fp16'
+RPL: input file '/home/taccuser/SimpleConvolution/input.xml'
+RPL: result dir '/home/taccuser/Desktop/rocprofiler/test_case_4'
+ROCProfiler: input from "/home/taccuser/SimpleConvolution/input.xml"
+  17 metrics
+    GRBM_COUNT, GRBM_GUI_ACTIVE, SQ_WAVES, SQ_INSTS_VALU, SQ_INSTS_VMEM_WR, SQ_INSTS_VMEM_RD, SQ_INSTS_SALU, SQ_INSTS_SMEM, SQ_INSTS_FLAT, SQ_INSTS_FLAT_LDS_ONLY, TA_TA_BUSY[0], TA_FLAT_READ_WAVEFRONTS[0], TCC_HIT[0], TCC_MISS[0], TCC_EA_WRREQ[0], TCC_EA_WRREQ_64B[0], TCP_TA_DATA_STALL_CYCLES[0]
+  1 traces
+    SQTT (
+      TARGET_CU = 0x0
+    )
+Platform 0 : Advanced Micro Devices, Inc.
+Platform found : Advanced Micro Devices, Inc.
+
+Selected Platform Vendor : Advanced Micro Devices, Inc.
+Device 0 : gfx900 Device ID is 0x70b940
+Executing kernel for 1 iterations
+-------------------------------------------
+
+ROCPRofiler: 3 contexts collected, output directory /home/taccuser/Desktop/rocprofiler/test_case_4
+RPL: '/home/taccuser/Desktop/rocprofiler/out4.csv' is generated

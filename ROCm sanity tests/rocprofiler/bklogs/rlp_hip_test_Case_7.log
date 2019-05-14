@@ -1,0 +1,22 @@
+RPL: on '181204_163016' from '/opt/rocm/rocprofiler' in '/mnt/ROCm-TestApps/rocprofiler'
+RPL: profiling '/opt/rocm/hip/samples/0_Intro/bit_extract/bit_extract'
+RPL: input file '/home/taccuser/Desktop/rocprofiler/input.xml'
+RPL: result dir '/home/taccuser/Desktop/rocprofiler/test_case_7'
+ROCProfiler: input from "/home/taccuser/Desktop/rocprofiler/input.xml"
+  17 metrics
+    GRBM_COUNT, GRBM_GUI_ACTIVE, SQ_WAVES, SQ_INSTS_VALU, SQ_INSTS_VMEM_WR, SQ_INSTS_VMEM_RD, SQ_INSTS_SALU, SQ_INSTS_SMEM, SQ_INSTS_FLAT, SQ_INSTS_FLAT_LDS_ONLY, TA_TA_BUSY[0], TA_FLAT_READ_WAVEFRONTS[0], TCC_HIT[0], TCC_MISS[0], TCC_EA_WRREQ[0], TCC_EA_WRREQ_64B[0], TCP_TA_DATA_STALL_CYCLES[0]
+  1 traces
+    SQTT (
+      TARGET_CU = 0x0
+    )
+info: running on device #0 Device 66a7
+info: allocate host mem (  7.63 MB)
+info: allocate device mem (  7.63 MB)
+info: copy Host2Device
+info: launch 'bit_extract_kernel' 
+info: copy Device2Host
+info: check result
+PASSED!
+
+ROCPRofiler: 1 contexts collected, output directory /home/taccuser/Desktop/rocprofiler/test_case_7
+RPL: '/home/taccuser/Desktop/rocprofiler/hip_be_out_7.csv' is generated

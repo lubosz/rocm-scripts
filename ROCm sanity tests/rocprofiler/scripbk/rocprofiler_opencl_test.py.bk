@@ -1,0 +1,106 @@
+import os
+import sys
+import re
+os.system("rm -rf result.ini");
+#print(type(sys.argv))
+#print sys.argv[0];
+if(sys.argv[0] == "command_line_based_automation.py"):
+	print('The command line arguments are:[Help]-pass below testcases in command line')
+	print "Please select any below tests and pass in command line";
+	print "Test_case1";
+	print "Test_case2";
+	print "Test_case3";
+	print "Test_case4";
+	print "Test_case5";
+	print "Test_case6";
+	print "All_Tests";
+list=["Test_case1","Test_case2","Test_case3","Test_case4","Test_case5","Test_case6"]
+i=1;
+ext="log";
+passing_count=0;
+failing_count=0;
+count=0;
+commands = {"Test_case1":'/opt/rocm/rocprofiler/bin/rpl_run.sh --timestamp on -i /home/taccuser/SimpleConvolution/input.xml -o /home/taccuser/Desktop/rocprofiler/out1.csv /home/taccuser/SimpleConvolution/SimpleConvolution_fp16',"Test_case2":'/opt/rocm/rocprofiler/bin/rpl_run.sh --timestamp on -i  /home/taccuser/SimpleConvolution/input.xml -t /home/taccuser/Desktop/rocprofiler/tmp -o /home/taccuser/Desktop/rocprofiler/out2.csv /home/taccuser/SimpleConvolution/SimpleConvolution_fp16',"Test_case3":'/opt/rocm/rocprofiler/bin/rpl_run.sh --timestamp on -i /home/taccuser/SimpleConvolution/input.xml -d /home/taccuser/Desktop/rocprofiler/test_case_3 -o /home/taccuser/Desktop/rocprofiler/out3.csv /home/taccuser/SimpleConvolution/SimpleConvolution_fp16 ',"Test_case4":'/opt/rocm/rocprofiler/bin/rpl_run.sh --timestamp on --basenames on -i /home/taccuser/SimpleConvolution/input.xml -d /home/taccuser/Desktop/rocprofiler/test_case_4 -o /home/taccuser/Desktop/rocprofiler/out4.csv /home/taccuser/SimpleConvolution/SimpleConvolution_fp16',"Test_case5":'/opt/rocm/rocprofiler/bin/rpl_run.sh --list-basic',"Test_case6":'/opt/rocm/rocprofiler/bin/rpl_run.sh --list-derived'}
+try:
+	#print commands["rocm-smi-vbios-ver"]
+	j=0;
+	for i in sys.argv:
+		if(sys.argv[1] == "All_Tests"):
+			for k in list:
+				j=j+1;
+				if(j>=1):
+					k=k.rstrip('\r\n');
+					command="%s>%s.%s"%(commands[k],k,ext)
+					os.system(command);
+                        		command1="%s.%s"%(k,ext);
+                       			f1=command1.strip("\n");
+					with open(f1) as open_file:
+						data = open_file.read()
+						searchObj = re.search("[\w\.]+-[\w\.]+-[\w\.]|[0-255]|[0-255]|\d",data, re.M|re.I)
+						if searchObj:
+                                        		#print "searchObj.group() : ", searchObj;
+                                       			 fo=open("result.ini","a+");
+                                        		 fo.write(k);
+                                        		 fo.write(":");
+                                        		 fo.write("Pass");
+                                        		 fo.write("\n");
+                                       			 passing_count=passing_count+1;
+                                		else:
+                                        		#print "Nothing Found!!";
+                                        		fo.write(k);
+                                        		fo.write(":");
+                                        		fo.write("Fail");
+                                        		fo.write("\t");
+                                        		fo.write("\n");
+                                        		failing_count=failing_count+1;
+                                		count=count+1;
+			break;
+		else:
+			j=j+1;
+        		if(j>1):
+	        		i=i.rstrip('\r\n');
+				command="%s>%s.%s"%(commands[i],i,ext)
+				print command;
+				command1="%s.%s"%(i,ext);
+				f1=command1.strip("\n");
+				with open(f1) as open_file:
+                        		data = open_file.read()
+                        		searchObj = re.search("[\w\.]+-[\w\.]+-[\w\.]|[0-255]|[0-255]|\d",data, re.M|re.I)
+					if searchObj:
+                        			#print "searchObj.group() : ", searchObj;
+                        			fo=open("result.ini","a+");
+                        			fo.write(i);
+                        			fo.write(":");
+                        			fo.write("Pass");
+                        			fo.write("\n");
+                        			passing_count=passing_count+1;
+					else:
+                        			#print "Nothing Found!!";
+                        			fo.write(i);
+                        			fo.write(":");
+                        			fo.write("Fail");
+                        			fo.write("\t");
+                        			fo.write("\n");
+                        			failing_count=failing_count+1;
+                			count=count+1;
+		print "***************************************************";
+		print "******************Total Tests********************",count;
+		print "******************Total Pass Tests**************",passing_count;
+		print "******************Total Fail Tests***************",failing_count;
+		print "***************************************************";
+		print "Note : Please check the result.ini file for all tests results";
+except SyntaxError:
+        print "Raised by parser when syntax error is encountered";
+except NameError:
+        print "Raised when an identifier is not found in the local or global namespace";
+except TypeError:
+        print "Raised when a function or operation is applied to an object of incorrect type";
+except IOError:
+        print "Raised when an input/ output operation fails";
+except IndexError:
+        print "Raised when index of a sequence is out of range";
+except AssertionError:
+        print "Raised when Assert statement fails";
+except  AttributeError:
+        print "issue is due to testcase failures";
+

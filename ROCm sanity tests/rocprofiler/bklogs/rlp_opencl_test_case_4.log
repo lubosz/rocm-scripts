@@ -1,0 +1,6 @@
+RPL: on '181204_163814' from '/opt/rocm/rocprofiler' in '/mnt/ROCm-TestApps/rocprofiler'
+RPL: profiling '/home/taccuser/SimpleConvolution/SimpleConvolution_fp16'
+RPL: input file '/home/taccuser/SimpleConvolution/input.xml'
+RPL: result dir '/home/taccuser/Desktop/rocprofiler/test_case_4'
+/opt/rocm/rocprofiler/bin/rpl_run.sh: Error: Input file '/home/taccuser/SimpleConvolution/input.xml' not found
+

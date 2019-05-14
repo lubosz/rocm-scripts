@@ -1,0 +1,10 @@
+import os 
+import sys
+#Build Steps for rocprofiler
+command="sh rocprofiler_build.sh";
+os.system(command);
+#copy one testcase into home directory for profiling purpose 
+command1="mount -t cifs -o username=taccuser,password=AH64_uh1 //hydinstreamcqe1/hsa /mnt";
+os.system(command1);
+command2="cp -rf /mnt/ROCm-TestApps/OpenCL/fp16_Lnx/SimpleConvolution/ /home/taccuser";
+

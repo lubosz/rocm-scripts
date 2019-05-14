@@ -1,0 +1,6 @@
+RPL: on '181204_153831' from '/opt/rocm/rocprofiler' in '/mnt/ROCm-TestApps/rocprofiler'
+RPL: profiling '/opt/rocm/hip/samples/0_Intro/bit_extract/bit_extract'
+RPL: input file '/home/taccuser/Desktop/rocprofiler/input.xml'
+RPL: result dir '/home/taccuser/Desktop/rocprofiler/test_case_8'
+/opt/rocm/rocprofiler/bin/rpl_run.sh: Error: Input file '/home/taccuser/Desktop/rocprofiler/input.xml' not found
+

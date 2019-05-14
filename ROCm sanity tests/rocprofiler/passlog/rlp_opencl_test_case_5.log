@@ -1,0 +1,88 @@
+RPL: on '181204_182703' from '/opt/rocm/rocprofiler' in '/mnt/ROCm-TestApps/rocprofiler'
+Basic HW counters:
+
+  gpu-agent0 : GRBM_COUNT : Tie High - Count Number of Clocks
+      block GRBM has 2 counters
+
+  gpu-agent0 : GRBM_GUI_ACTIVE : The GUI is Active
+      block GRBM has 2 counters
+
+  gpu-agent0 : SQ_WAVES : Count number of waves sent to SQs. (per-simd, emulated, global)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_VALU : Number of VALU instructions issued. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_VMEM_WR : Number of VMEM write instructions issued (including FLAT). (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_VMEM_RD : Number of VMEM read instructions issued (including FLAT). (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_SALU : Number of SALU instructions issued. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_SMEM : Number of SMEM instructions issued. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_FLAT : Number of FLAT instructions issued. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_FLAT_LDS_ONLY : Number of FLAT instructions issued that read/wrote only from/to LDS (only works if EARLY_TA_DONE is enabled). (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_LDS : Number of LDS instructions issued (including FLAT). (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INSTS_GDS : Number of GDS instructions issued. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_WAIT_INST_LDS : Number of wave-cycles spent waiting for LDS instruction issue. In units of 4 cycles. (per-simd, nondeterministic)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_ACTIVE_INST_VALU : regspec 71? Number of cycles the SQ instruction arbiter is working on a VALU instruction. (per-simd, nondeterministic)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_INST_CYCLES_SALU : Number of cycles needed to execute non-memory read scalar operations. (per-simd, emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_THREAD_CYCLES_VALU : Number of thread-cycles used to execute VALU operations (similar to INST_CYCLES_VALU but multiplied by # of active threads). (per-simd)
+      block SQ has 8 counters
+
+  gpu-agent0 : SQ_LDS_BANK_CONFLICT : Number of cycles LDS is stalled by bank conflicts. (emulated)
+      block SQ has 8 counters
+
+  gpu-agent0 : TA_TA_BUSY[0-15] : TA block is busy. Perf_Windowing not supported for this counter.
+      block TA has 2 counters
+
+  gpu-agent0 : TA_FLAT_READ_WAVEFRONTS[0-15] : Number of flat opcode reads processed by the TA.
+      block TA has 2 counters
+
+  gpu-agent0 : TA_FLAT_WRITE_WAVEFRONTS[0-15] : Number of flat opcode writes processed by the TA.
+      block TA has 2 counters
+
+  gpu-agent0 : TCC_HIT[0-15] : Number of cache hits.
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_MISS[0-15] : Number of cache misses. UC reads count as misses.
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_EA_WRREQ[0-15] : Number of transactions (either 32-byte or 64-byte) going over the TC_EA_wrreq interface. Atomics may travel over the same interface and are generally classified as write requests. This does not include probe commands.
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_EA_WRREQ_64B[0-15] : Number of 64-byte transactions going (64-byte write or CMPSWAP) over the TC_EA_wrreq interface.
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_EA_WRREQ_STALL[0-15] : Number of cycles a write request was stalled.
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_EA_RDREQ[0-15] : Number of TCC/EA read requests (either 32-byte or 64-byte)
+      block TCC has 4 counters
+
+  gpu-agent0 : TCC_EA_RDREQ_32B[0-15] : Number of 32-byte TCC/EA read requests
+      block TCC has 4 counters
+
+  gpu-agent0 : TCP_TA_DATA_STALL_CYCLES[0-15] : TCP stalls TA data interface. Now Windowed.
+      block TCP has 4 counters
+
+ROCPRofiler: 0 contexts collected

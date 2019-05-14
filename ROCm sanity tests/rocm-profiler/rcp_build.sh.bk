@@ -1,0 +1,29 @@
+## Created by    : Paresh Patel
+## Creation Date : 04/12/2018
+## Description   : Script is for build rocm-profiler(RCP)
+
+#!/bin/sh
+current=`pwd`
+
+cd $HOME/Desktop/
+echo "AH64_uh1" | sudo rm -rf RCP
+
+git clone https://github.com/GPUOpen-Tools/RCP.git
+cd RCP
+python Scripts/UpdateCommon.py
+echo "y" | sudo apt-get install scons
+echo "y" | sudo apt-get install mesa-common-dev
+echo "y" | sudo apt-get install gcc-multilib g++-multilib
+echo "y" | sudo apt-get install libboost-all-dev
+echo "y" | sudo apt-get install libboost-chrono-dev:i386
+echo "y" | sudo apt-get install libboost-date-time-dev:i386
+echo "y" | sudo apt-get install libboost-filesystem-dev:i386
+echo "y" | sudo apt-get install libboost-program-options-dev:i386
+echo "y" | sudo apt-get install libboost-system-dev:i386
+echo "y" | sudo apt-get install libboost-thread-dev:i386
+echo "y" | sudo apt-get install libboost-wave-dev:i386
+       
+chmod -R 777 *
+cd Build/Linux
+./build_rcp.sh skip-32bitbuild
+echo "AH64_uh1" | sudo cp -r $HOME/Desktop/RCP/bin/ /opt/rocm/profiler/bin/
