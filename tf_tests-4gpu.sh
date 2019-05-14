@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # run_soumith_benchmarks is not applicable for TF1.8 and higher. refer https://github.com/soumith/convnet-benchmarks/issues/138
 #This script is based on python3 . When TF was build with python3, use python3 . When TF was built with python2, replace python3 to python2
@@ -6,16 +5,15 @@
 #export HSA_ENABLE_SDMA=0
 
 cwd=`pwd`
-BASEDIR=$HOME
+BASEDIR=/root/
 
 cd $cwd
 #rm -rf logs
 mkdir -p /dockerx/tf-logs
 
-MODELDIR="$BASEDIR/models"
-BENCHDIR="$BASEDIR/benchmarks"
-LOGDIR="/dockerx/tf-logs"
-
+export MODELDIR="$BASEDIR/models"
+export BENCHDIR="$BASEDIR/benchmarks"
+export LOGDIR="/dockerx/tf-logs"
 download_tensorflow_models()
 {
     cd $BASEDIR
@@ -36,6 +34,7 @@ download_tensorflow_benchmarks()
     pushd benchmarks
     popd
 }
+
 run_convolutional_quick_test()
 {
     echo "=======================convolutional_quick_test==============="
@@ -101,7 +100,7 @@ run_resnet_on_cifar10()
                             --log_root=/tmp/resnet_model \
                             --train_dir=/tmp/resnet_model/train \
                             --dataset='cifar10' \
-                            --num_gpus=2 2>&1 | tee -a resnet_on_cifar10.txt
+                            --num_gpus=1 2>&1 | tee -a resnet_on_cifar10.txt
     cp -rf resnet_on_cifar10.txt $LOGDIR
 
         #Total Avg. Execution time : 40mins
@@ -175,11 +174,11 @@ run_tf_cnn_benchmarks()
 #       sed -i 's/import cPickle/import pickle/g' datasets.py
         cd $BENCHDIR
 #     MODELS="alexnet"
-    	MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
+    MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
 	NGPUS=4
-	ITERATIONS=500
+	ITERATIONS=50
 	BATCH_SIZE=( 1 2 4 8 16 32 64 )
-	#BATCH_SIZE=( 32 64 128 )
+       #BATCH_SIZE=(32 64)
 
 	for j in ${BATCH_SIZE[@]}
 	do
@@ -191,14 +190,28 @@ run_tf_cnn_benchmarks()
     --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
     done
     done
+ 
+
+    #grep -E "Model:|total images/sec" tf_cnn_benchmarks_log.txt
+    #Total Avg. Execution time : 300mins
+    # Expected "final" output:
+    # (TITAN X results shown below)
+    #   AlexNet     @   2500    images/sec: 2495.8 +/- 1.3 (jitter = 45.6)      6.178   0.006   0.029
+    #   GoogleNet   @   2500    images/sec: 422.4 +/- 0.2 (jitter = 7.4)        3.647   0.031   0.156
+    #   inception3  @   2500    images/sec: 123.1 +/- 0.1 (jitter = 1.5)        0.436   1.000   1.000
+    #   lenet       @   2550    images/sec: 14362.7 +/- 22.4 (jitter = 827.9)   3.500   0.031   0.156
+    #   overfeat    @   2500    images/sec: 541.1 +/- 0.2 (jitter = 8.9)        3.748   0.031   0.156
+    #   resnet50    @   2500    images/sec: 190.8 +/- 0.0 (jitter = 0.9)        0.912   1.000   1.000
+    #   trivial     @   2500    images/sec: 7949.9 +/- 7.3 (jitter = 354.5)     6.674   0.406   0.406
+    #   vgg11       @   2500    images/sec: 250.6 +/- 0.1 (jitter = 2.0)        4.457   0.031   0.094
 }
 run_tf_cnn_benchmarks_128()
 {
     echo "=======================tf_cnn_benchmarks_128==============="
         cd $BENCHDIR
-    MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
-        NGPUS=4
-        ITERATIONS=500
+        MODELS="alexnet googlenet inception3 resnet50 vgg11 vgg16 vgg19 resnet50_v1.5"
+	NGPUS=4
+        ITERATIONS=50
         BATCH_SIZE=128
 
         for j in ${BATCH_SIZE[@]}
@@ -211,15 +224,15 @@ run_tf_cnn_benchmarks_128()
     --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
     done
     done
-
 }
+
 run_tf_cnn_benchmarks_256()
 {
     echo "=======================tf_cnn_benchmarks_256==============="
         cd $BENCHDIR
-    MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
+	MODELS="alexnet googlenet resnet50_v1.5"
         NGPUS=4
-        ITERATIONS=500
+        ITERATIONS=50
         BATCH_SIZE=256
 
         for j in ${BATCH_SIZE[@]}
@@ -234,14 +247,13 @@ run_tf_cnn_benchmarks_256()
     done
 
 }
-
 run_tf_cnn_benchmarks_512()
-{    
+{
     echo "=======================tf_cnn_benchmarks_512==============="
         cd $BENCHDIR
-    MODELS="alexnet googlenet resnet50 resnet50_v1.5"
+	MODELS="alexnet resnet50_v1.5"
         NGPUS=4
-        ITERATIONS=500
+        ITERATIONS=50
         BATCH_SIZE=(512)
 
         for j in ${BATCH_SIZE[@]}
@@ -260,9 +272,9 @@ run_tf_cnn_benchmarks_1024()
 {
     echo "=======================tf_cnn_benchmarks_1024==============="
         cd $BENCHDIR
-    MODELS="alexnet"
+	MODELS="alexnet"
         NGPUS=4
-        ITERATIONS=500
+        ITERATIONS=50
         BATCH_SIZE=(1024)
 
         for j in ${BATCH_SIZE[@]}
@@ -275,20 +287,6 @@ run_tf_cnn_benchmarks_1024()
     --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
     done
     done
-
-
-    #grep -E "Model:|total images/sec" tf_cnn_benchmarks_log.txt
-    #Total Avg. Execution time : 300mins
-    # Expected "final" output:
-    # (TITAN X results shown below)
-    #   AlexNet     @   2500    images/sec: 2495.8 +/- 1.3 (jitter = 45.6)      6.178   0.006   0.029
-    #   GoogleNet   @   2500    images/sec: 422.4 +/- 0.2 (jitter = 7.4)        3.647   0.031   0.156
-    #   inception3  @   2500    images/sec: 123.1 +/- 0.1 (jitter = 1.5)        0.436   1.000   1.000
-    #   lenet       @   2550    images/sec: 14362.7 +/- 22.4 (jitter = 827.9)   3.500   0.031   0.156
-    #   overfeat    @   2500    images/sec: 541.1 +/- 0.2 (jitter = 8.9)        3.748   0.031   0.156
-    #   resnet50    @   2500    images/sec: 190.8 +/- 0.0 (jitter = 0.9)        0.912   1.000   1.000
-    #   trivial     @   2500    images/sec: 7949.9 +/- 7.3 (jitter = 354.5)     6.674   0.406   0.406
-    #   vgg11       @   2500    images/sec: 250.6 +/- 0.1 (jitter = 2.0)        4.457   0.031   0.094
 }
 
 #download_tensorflow_models
@@ -306,6 +304,7 @@ run_tf_cnn_benchmarks_128
 run_tf_cnn_benchmarks_256
 run_tf_cnn_benchmarks_512
 run_tf_cnn_benchmarks_1024
+
 
 cd $LOGDIR
 
@@ -388,5 +387,4 @@ fi
 
 cp -rf Results.ini ../
 
-#run_tf_cnn_benchmarks_512()
 

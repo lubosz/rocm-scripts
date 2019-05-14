@@ -1,6 +1,6 @@
 #!/bin/bash
 current=`pwd`
-MODELDIR=$HOME/models
+MODELDIR=/root/models
 mkdir -p /dockerx/flower-alexnet
 rm -rf /dockerx/flower-alexnet/*
 mkdir -p /dockerx/tf-logs
