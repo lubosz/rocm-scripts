@@ -109,13 +109,14 @@ vi .jenkins/caffe2/bench.sh
 #Run Caffe2 and pyTorch Tests
 =============================
 
-cd /home/caffe2/
+cd /root/caffe2/
 .jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench.log
 .jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test.log
 
 
-cd /home/pytorch/
-PYTORCH_TEST_WITH_ROCM=1 python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test.log
+cd /root/pytorch/
+export PYTORCH_TEST_WITH_ROCM=1
+python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test.log
 
 
 
