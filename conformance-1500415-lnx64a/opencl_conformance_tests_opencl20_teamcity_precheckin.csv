@@ -1,0 +1,21 @@
+#
+# OpenCL 2.0 Conformance Test Suite (for teamcity precheckin)
+# 
+
+# #########################################
+# Basic operation tests
+# #########################################
+Basic,basic/test_basic
+#API,api/test_api
+
+# #########################################
+# General operation
+# #########################################
+#C11 Atomics,c11_atomics/test_c11_atomics
+Execution Model,device_execution/test_device_execution
+Generic Address Space,generic_address_space/test_generic_address_space
+Non Uniform Work Groups,non_uniform_work_group/test_non_uniform_work_group
+Pipes,pipes/test_pipes
+SVM,SVM/test_SVM
+Workgroups,workgroups/test_workgroups
+Subgroups,subgroups/test_subgroups
