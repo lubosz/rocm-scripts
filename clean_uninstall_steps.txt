@@ -57,7 +57,7 @@ cd 10490
 wget http://rocm-ci.amd.com/job/compute-roc-master/10490/artifact/artifacts/compute-roc-master-10490.tar.bz2
 
 
-cd ~/Desktop/package
+cd ~/Desktop/package7
 
 rm -rf *
 
@@ -110,13 +110,13 @@ vi .jenkins/caffe2/bench.sh
 =============================
 
 cd /root/caffe2/
-.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench.log
-.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test.log
+.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench_10490.log
+.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test_10490.log
 
 
 cd /root/pytorch/
 export PYTORCH_TEST_WITH_ROCM=1
-python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test.log
+python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test_10490.log
 
 
 
