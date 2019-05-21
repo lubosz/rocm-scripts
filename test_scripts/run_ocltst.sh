@@ -1,8 +1,12 @@
 chmod -R 777 ~/dockerx/
 LOGDIR=~/dockerx/
 
+cd ~/Desktop/
+mkdir BUILD
+
+
 build=10534
-cd ~/BUILD/$build/bin/ocltst
+cd ~/Desktop/BUILD/$build/bin/ocltst
 
 export LD_LIBRARY_PATH=.
 
