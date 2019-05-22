@@ -1,0 +1,45 @@
+#
+# OpenCL Conformance Test Suite (for teamcity precheckin)
+#
+
+# #########################################
+# Basic Information on the compute device
+# #########################################
+Compute Info,computeinfo/computeinfo
+
+Basic,basic/test_basic
+Thread Dimensions,thread_dimensions/test_thread_dimensions quick*
+
+# #########################################
+# General operation
+# #########################################
+Allocations (single maximum),allocations/test_allocations single 5 all
+Allocations (total maximum),allocations/test_allocations multiple 5 all 
+
+# #########################################
+# OpenGL/CL interaction
+# #########################################
+#OpenCL-GL Sharing,gl/test_gl
+
+#
+# OpenCL Conformance Test for DirectX interop,
+#
+#D3D11,D3D11/test_d3d11
+
+Math,math_brute_force/bruteforce -w1
+
+#request additional conformance testing bug 8933
+images copy 2D CL_FLOAT,images/clCopyImage/test_cl_copy_images 2D CL_FLOAT
+images copy small_images 2Darray CL_RGBA,images/clCopyImage/test_cl_copy_images small_images 2Darray CL_RGBA
+images copy max_images 1D CL_R,images/clCopyImage/test_cl_copy_images max_images 1D CL_R 
+images read_write 3D CL_UNSIGNED_INT8,images/clReadWriteImage/test_cl_read_write_images 3D CL_UNSIGNED_INT8
+images read_write use_pitches 1Darray,images/clReadWriteImage/test_cl_read_write_images use_pitches 1Darray 
+images read_write max_images 2D CL_FLOAT,images/clReadWriteImage/test_cl_read_write_images max_images 2D CL_FLOAT
+images fill 3D CL_SIGNED_INT16,images/clFillImage/test_cl_fill_images 3D CL_SIGNED_INT16
+images fill 2Darray CL_UNORM_INT8,images/clFillImage/test_cl_fill_images use_pitches 2Darray CL_UNORM_INT8
+images fill max_images 1D CL_ARGB,images/clFillImage/test_cl_fill_images max_images 1D CL_ARGB
+images samplerless CL_RGBA,images/samplerlessReads/test_samplerless_reads CL_RGBA
+images samplerless use_pitches CL_UNSIGNED_INT32,images/samplerlessReads/test_samplerless_reads use_pitches CL_UNSIGNED_INT32
+images samplerless max_images CL_HALF_FLOAT,images/samplerlessReads/test_samplerless_reads max_images CL_HALF_FLOAT
+
+SPIR (basic),spir/test_spir basic

@@ -1,0 +1,43 @@
+#
+# OpenCL Conformance Test Suite (SPIR only)
+#
+SPIR (api),spirv/test_spirv api
+SPIR (api_double),spirv/test_spirv api_double
+SPIR (atomics),spirv/test_spirv atomics
+SPIR (basic),spirv/test_spirv basic
+SPIR (basic_double),spirv/test_spirv basic_double
+SPIR (commonfns),spirv/test_spirv commonfns
+SPIR (commonfns_double),spirv/test_spirv commonfns_double
+SPIR (conversions),spirv/test_spirv conversions
+SPIR (geometrics),spirv/test_spirv geometrics
+SPIR (geometrics_double),spirv/test_spirv geometrics_double
+SPIR (half),spirv/test_spirv half
+SPIR (half_double),spirv/test_spirv half_double
+SPIR (kernel_image_methods),spirv/test_spirv kernel_image_methods
+SPIR (images_kernel_read_write),spirv/test_spirv images_kernel_read_write
+SPIR (images_samplerlessRead),spirv/test_spirv images_samplerlessRead
+SPIR (integer_ops),spirv/test_spirv integer_ops
+SPIR (math_brute_force),spirv/test_spirv math_brute_force
+SPIR (math_brute_force_double),spirv/test_spirv math_brute_force_double
+SPIR (printf),spirv/test_spirv printf
+SPIR (profiling),spirv/test_spirv profiling
+SPIR (relationals),spirv/test_spirv relationals
+SPIR (relationals_double),spirv/test_spirv relationals_double
+SPIR (select),spirv/test_spirv select
+SPIR (select_double),spirv/test_spirv select_double
+SPIR (vec_align),spirv/test_spirv vec_align
+SPIR (vec_align_double),spirv/test_spirv vec_align_double
+SPIR (vec_step),spirv/test_spirv vec_step
+SPIR (vec_step_double),spirv/test_spirv vec_step_double
+SPIR (compile_and_link),spirv/test_spirv compile_and_link
+SPIR (sampler_enumeration),spirv/test_spirv sampler_enumeration
+SPIR (enum_values),spirv/test_spirv enum_values
+SPIR (kernel_attributes),spirv/test_spirv kernel_attributes
+#SPIR (binary_type),spirv/test_spirv binary_type
+SPIR (workgroups),spirv/test_spirv workgroups
+SPIR (c11_atomics),spirv/test_spirv c11_atomics
+SPIR (blocks),spirv/test_spirv blocks
+SPIR (extended_execution),spirv/test_spirv extended_execution
+SPIR (pipes),spirv/test_spirv pipes
+SPIR (vec_i1),spirv/test_spirv vec_i1
+SPIR (conversions_double),spirv/test_spirv conversions_double

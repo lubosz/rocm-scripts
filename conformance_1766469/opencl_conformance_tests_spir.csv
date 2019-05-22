@@ -1,0 +1,37 @@
+#
+# OpenCL Conformance Test Suite (SPIR only)
+#
+SPIR (api),spir/test_spir api
+SPIR (api_double),spir/test_spir api_double
+SPIR (atomics),spir/test_spir atomics
+SPIR (basic),spir/test_spir basic
+SPIR (basic_double),spir/test_spir basic_double
+SPIR (commonfns),spir/test_spir commonfns
+SPIR (commonfns_double),spir/test_spir commonfns_double
+SPIR (conversions),spir/test_spir conversions
+SPIR (conversions_double),spir/test_spir conversions_double
+SPIR (geometrics),spir/test_spir geometrics
+SPIR (geometrics_double),spir/test_spir geometrics_double
+SPIR (half),spir/test_spir half
+SPIR (half_double),spir/test_spir half_double
+SPIR (kernel_image_methods),spir/test_spir kernel_image_methods
+SPIR (images_kernel_read_write),spir/test_spir images_kernel_read_write
+SPIR (images_samplerlessRead),spir/test_spir images_samplerlessRead
+SPIR (integer_ops),spir/test_spir integer_ops
+SPIR (math_brute_force),spir/test_spir math_brute_force
+SPIR (math_brute_force_double),spir/test_spir math_brute_force_double
+SPIR (printf),spir/test_spir printf
+SPIR (profiling),spir/test_spir profiling
+SPIR (relationals),spir/test_spir relationals
+SPIR (relationals_double),spir/test_spir relationals_double
+SPIR (select),spir/test_spir select
+SPIR (select_double),spir/test_spir select_double
+SPIR (vec_align),spir/test_spir vec_align
+SPIR (vec_align_double),spir/test_spir vec_align_double
+SPIR (vec_step),spir/test_spir vec_step
+SPIR (vec_step_double),spir/test_spir vec_step_double
+SPIR (compile_and_link),spir/test_spir compile_and_link
+SPIR (sampler_enumeration),spir/test_spir sampler_enumeration
+SPIR (enum_values),spir/test_spir enum_values
+SPIR (kernel_attributes),spir/test_spir kernel_attributes
+SPIR (binary_type),spir/test_spir binary_type
