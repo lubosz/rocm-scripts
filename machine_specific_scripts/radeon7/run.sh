@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./basic-check.sh
+
 ./run_hip-docker.sh
 
 ./alexnet-flower_1gpu.sh
@@ -8,4 +10,6 @@
 
 ./tf-fp16-1gpu.sh
 
-./run_miOpen.sh
+./run_mathlibs-docker.sh
+
+./run_frameworks-docker.sh
