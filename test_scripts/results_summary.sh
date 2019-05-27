@@ -3,46 +3,46 @@
 cd /dockerx/
 
 
-echo "===============MIOpen================="
+echo "\n\n\n===============MIOpen================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocALUTION================="
+echo "\n\n\n===============rocALUTION================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocPRIM================="
+echo "\n\n\n===============rocPRIM================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============hipSPARSE================="
+echo "\n\n\n===============hipSPARSE================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocSPARSE================="
+echo "\n\n\n===============rocSPARSE================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocFFT================="
+echo "\n\n\n===============rocFFT================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============hipBLAS================="
+echo "\n\n\n===============hipBLAS================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocBLAS================="
+echo "\n\n\n===============rocBLAS================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocRAND_Kernel_BM================="
+echo "\n\n\n===============rocRAND_Kernel_BM================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocRAND_Generate_BM================="
+echo "\n\n\n===============rocRAND_Generate_BM================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
 
-echo "===============rocRAND================="
+echo "\n\n\n===============rocRAND================="
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log >> ~/dockerx/full_summary.log
