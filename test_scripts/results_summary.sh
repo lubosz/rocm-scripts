@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd ~/dockerx/
+cd /dockerx/
+
 echo (===============MIOpen=================)
 
 tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
