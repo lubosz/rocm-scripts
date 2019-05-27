@@ -46,3 +46,11 @@ timeout 1s tail -f bm_rocrand_generate.log 2>&1 | tee -a /dockerx/full_summary.l
 printf "\n\n===============rocRAND=================\n" 2>&1 | tee -a /dockerx/full_summary.log
 
 timeout 1s tail -f rocrand-ut.log 2>&1 | tee -a /dockerx/full_summary.log
+
+printf "\n\n===============hipCUB=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+
+timeout 1s tail -f hipCUB.log 2>&1 | tee -a /dockerx/full_summary.log
+
+printf "\n\n===============rocTHRUST=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+
+timeout 1s tail -f rocTHRUST.log 2>&1 | tee -a /dockerx/full_summary.log

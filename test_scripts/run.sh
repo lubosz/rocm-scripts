@@ -13,3 +13,4 @@
 
 ./results_summary.sh
 
+./new_tests.sh
