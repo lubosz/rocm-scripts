@@ -11,3 +11,5 @@
 
 ./alexnet-flower_4gpu.sh
 
+./results_summary.sh
+
