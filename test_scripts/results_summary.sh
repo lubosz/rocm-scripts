@@ -3,11 +3,11 @@
 cd /dockerx/
 
 
-echo "\n\n===============MIOpen=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+echo \n\n "===============MIOpen=================" \n 2>&1 | tee -a /dockerx/full_summary.log
 
 timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a /dockerx/full_summary.log
 
-echo "\n\n===============rocALUTION=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+echo "/n/n===============rocALUTION=================/n" 2>&1 | tee -a /dockerx/full_summary.log
 
 timeout 1s tail -f rocalution-test.log 2>&1 | tee -a /dockerx/full_summary.log
 
