@@ -1,70 +1,48 @@
 #!/bin/bash
 
-cd ~/dockerx/
 cd /dockerx/
 
-echo (===============MIOpen=================)
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+echo "===============MIOpen================="
 
-break
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-echo (===============rocALUTION=================)
+echo "===============rocALUTION================="
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-break
+echo "===============rocPRIM================="
 
-echo (===============rocPRIM=================)
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+echo "===============hipSPARSE================="
 
-break
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-echo (===============hipSPARSE=================)
+echo "===============rocSPARSE================="
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-break
+echo "===============rocFFT================="
 
-echo (===============rocSPARSE=================)
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+echo "===============hipBLAS================="
 
-break
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-echo (===============rocFFT=================)
+echo "===============rocBLAS================="
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-break
+echo "===============rocRAND_Kernel_BM================="
 
-echo (===============hipBLAS=================)
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
+echo "===============rocRAND_Generate_BM================="
 
-break
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
 
-echo (===============rocBLAS=================)
+echo "===============rocRAND================="
 
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
-
-break
-
-echo (===============rocRAND_Kernel_BM=================)
-
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
-
-break
-
-echo (===============rocRAND_Generate_BM=================)
-
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
-
-break
-
-echo (===============rocRAND=================)
-
-tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
-
-break
+timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a ~/dockerx/full_summary.log
