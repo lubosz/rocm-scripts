@@ -11,6 +11,6 @@
 
 ./alexnet-flower_4gpu.sh
 
-./results_summary.sh
+./new_docker_tests.sh
 
-./new_tests.sh
+./results_summary.sh
