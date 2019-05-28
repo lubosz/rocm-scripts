@@ -3,9 +3,13 @@
 cd /dockerx/
 
 
-printf "\n\n===============MIOpen=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+printf "\n\n===============MIOpen-HIP=================\n" 2>&1 | tee -a /dockerx/full_summary.log
 
-timeout 1s tail -f mlopen-ut.log 2>&1 | tee -a /dockerx/full_summary.log
+timeout 1s tail -f mlopen-ut-hip.log 2>&1 | tee -a /dockerx/full_summary.log
+
+printf "\n\n===============MIOpen-OCL=================\n" 2>&1 | tee -a /dockerx/full_summary.log
+
+timeout 1s tail -f mlopen-ut-ocl.log 2>&1 | tee -a /dockerx/full_summary.log
 
 printf "\n\n===============rocALUTION=================\n" 2>&1 | tee -a /dockerx/full_summary.log
 

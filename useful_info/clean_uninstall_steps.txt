@@ -49,25 +49,25 @@ cd ~/Desktop/
 
 mkdir package
 
-mkdir 10603 
+mkdir 10630 
 
-cd 10603
+cd 10630
 
 
-wget http://rocm-ci.amd.com/job/compute-roc-master/10603/artifact/artifacts/compute-roc-master-10603.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10630/artifact/artifacts/compute-roc-master-10630.tar.bz2
 
 
 cd ~/Desktop/package
 
 rm -rf *
 
-cp -rf ~/Desktop/10603/compute-roc-master-10603.tar.bz2 .
+cp -rf ~/Desktop/10630/compute-roc-master-10630.tar.bz2 .
 
-tar -xvf compute-roc-master-10603.tar.bz2 
- 
+tar -xvf compute-roc-master-10630.tar.bz2
+
 aria2c deb.meta4
 
-cp -rf ~/Desktop/package/* ~/Desktop/10603
+cp -rf ~/Desktop/package/* ~/Desktop/10630
 
 ./utils/install.sh
 
@@ -110,13 +110,13 @@ vi .jenkins/caffe2/bench.sh
 =============================
 
 cd /root/caffe2/
-.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench_10603.log
-.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test_10603_1.log
+.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench_10630.log
+.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test_10630.log
 
 
 cd /root/pytorch/
 export PYTORCH_TEST_WITH_ROCM=1
-python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/putorch_test_10603.log
+python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/pytorch_test_10630.log
 
 
 
