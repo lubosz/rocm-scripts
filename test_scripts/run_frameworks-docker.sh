@@ -34,5 +34,24 @@ export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 
 cd $dir/MLOpen/build_hip
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
-make check -j16 2>&1| tee $logs/mlopen-ut.log
+make check -j16 2>&1| tee $logs/mlopen-ut-hip.log
+unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
+
+sudo dpkg -r miopen-hip
+
+cd $dir/MLOpen/
+
+mkdir build_ocl && cd build_ocl
+
+#To build MIOpen with OpenCL backend 
+cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=OpenCL -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DBoost_USE_STATIC_LIBS=Off -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. | tee -a mlopenocl_build.log
+
+make -j16 | tee -a mlopenocl_build.log
+make package | tee -a mlopenocl_build.log
+echo AH64_uh1 | sudo dpkg -i *.deb
+
+
+cd $dir/MLOpen/build_ocl
+export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
+make check -j16 2>&1| tee $logs/mlopen-ut-ocl.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
