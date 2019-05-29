@@ -31,11 +31,32 @@ export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 ./examples/mnist/train_lenet.sh --gpu 0 2>&1 | tee $logs/hipcaffe_mnist.log
 ./build/tools/caffe train --solver=examples/cifar10/cifar10_quick_solver.prototxt --gpu 0 2>&1 | tee $logs/hipcaffe_cifar10.log
 
+#============MIOpen_HIP===================
+
+sudo dpkg -r miopen-hip
+sudo dpkg -r miopen-opencl
+
+cd $dir/MLOpen/
+
+mkdir build_hip && cd build_hip
+
+rm -rf *
+
+#To build MIOpen with HIP backend
+CXX=/opt/rocm/hcc/bin/hcc cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=HIP -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DBoost_USE_STATIC_LIBS=Off -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" .. | tee -a mlopenhip_build.log
+
+make -j16 | tee -a mlopenhip_build.log
+make package | tee -a mlopenhip_build.log
+echo AH64_uh1 | sudo dpkg -i *.deb
 
 cd $dir/MLOpen/build_hip
+
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
 make check -j16 2>&1| tee $logs/mlopen-ut-hip.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
+
+
+#============MIOpen_OCL===================
 
 sudo dpkg -r miopen-hip
 
