@@ -38,7 +38,7 @@ sudo dpkg -r miopen-opencl
 
 cd $dir/MLOpen/
 
-mkdir build_hip && cd build_hip
+mkdir -p build_hip && cd build_hip
 
 rm -rf *
 
@@ -62,7 +62,7 @@ sudo dpkg -r miopen-hip
 
 cd $dir/MLOpen/
 
-mkdir build_ocl && cd build_ocl
+mkdir -p build_ocl && cd build_ocl
 
 rm -rf *
 
