@@ -8,7 +8,7 @@ echo $username | sudo apt-get -y  install dos2unix smbclient vim ssh
 echo $username | sudo apt-get -y  install cifs-utils expect cmake git
 
 #############Sikuli needs#########
-echo $username | sudo apt-get -y  install openjdk-8-jre-headless
+#echo $username | sudo apt-get -y  install openjdk-8-jre-headless
 #############dt99 script needs#########
 echo $username | sudo apt-get -y  install mesa-utils
 #############Gromacs Needs#########
@@ -24,8 +24,8 @@ echo $username | sudo apt-get -y  install check xsltproc
 #############roc-master driver hcc needs#########
 echo $username | sudo apt-get -y  install g++-multilib gcc-multilib libunwind-dev  libnuma-dev
 #############computeapps - snapc and xsbench#########
-echo $username | sudo apt-get -y install libdwarf-dev libelf-dev libomp-dev openmpi-bin libopenmpi-dev
-echo $username | sudo apt-get -y install libboost*
+#echo $username | sudo apt-get -y install libdwarf-dev libelf-dev libomp-dev openmpi-bin libopenmpi-dev
+#echo $username | sudo apt-get -y install libboost*
 #############hcfft#########
 #echo $username | sudo apt-get -y install libfftw3-dev
 #############this is required to grab deb or rpm files with latest change in mainline build install method#########
