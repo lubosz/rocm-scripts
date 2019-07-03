@@ -3,7 +3,7 @@ current=`pwd`
 dir=/root/driver
 logs=/dockerx
 
-
+"
 cd $dir/deepbench/code/amd/bin/
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/rccl/lib
@@ -30,6 +30,7 @@ export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 
 ./examples/mnist/train_lenet.sh --gpu 0 2>&1 | tee $logs/hipcaffe_mnist.log
 ./build/tools/caffe train --solver=examples/cifar10/cifar10_quick_solver.prototxt --gpu 0 2>&1 | tee $logs/hipcaffe_cifar10.log
+"
 
 #============MIOpen_HIP===================
 
@@ -78,3 +79,8 @@ cd $dir/MLOpen/build_ocl
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
 make check -j16 2>&1| tee $logs/mlopen-ut-ocl.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
+
+sudo dpkg -r miopen-opencl
+
+cd ../build_hip
+echo AH64_uh1 | sudo dpkg -i *.deb
