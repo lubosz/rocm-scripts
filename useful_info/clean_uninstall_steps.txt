@@ -1,52 +1,45 @@
 cd /var/lib/dpkg/info/
 ls -l hcc*
-echo AH64_uh1 | sudo -S rm -rf hcc*
-echo AH64_uh1 y | sudo -S apt-get purge hcc
+echo AH64_uh1 | sudo rm -rf hcc*
+echo AH64_uh1 | sudo apt-get purge hcc
 
 
-echo AH64_uh1 | sudo -S dpkg --purge rocsparse
-echo AH64_uh1 | sudo -S dpkg --purge hipsparse
-echo AH64_uh1 | sudo -S dpkg --purge rocsparse
-echo AH64_uh1 | sudo -S dpkg --purge hip_hcc
-echo AH64_uh1 | sudo -S dpkg --purge hip_samples
-echo AH64_uh1 | sudo -S dpkg --purge hip_doc
-echo AH64_uh1 | sudo -S dpkg --purge hip_base
-echo AH64_uh1 | sudo -S dpkg --purge hcc
-echo AH64_uh1 | sudo -S dpkg --purge rocm-utils
-echo AH64_uh1 | sudo -S dpkg --purge rocminfo
-echo AH64_uh1 | sudo -S dpkg --purge rocm-profiler
-echo AH64_uh1 | sudo -S dpkg --purge rocm-clang-ocl
-echo AH64_uh1 | sudo -S dpkg --purge rocm-opencl-dev
-echo AH64_uh1 | sudo -S dpkg --purge rocm-opencl
-echo AH64_uh1 | sudo -S dpkg --purge rocm-device-libs
-echo AH64_uh1 | sudo -S dpkg --purge rocr_debug_agent
-echo AH64_uh1 | sudo -S dpkg --purge hsa-rocr-dev
-echo AH64_uh1 | sudo -S dpkg --purge cxlactivitylogger
-echo AH64_uh1 | sudo -S dpkg --purge rocprofiler-dev
-echo AH64_uh1 | sudo -S dpkg --purge hsa-rocr-dev
-echo AH64_uh1 | sudo -S dpkg --purge hsa-ext-rocr-dev
-echo AH64_uh1 | sudo -S dpkg --purge hsakmt-roct-dev
-echo AH64_uh1 | sudo -S dpkg --purge hsakmt-roct
-echo AH64_uh1 | sudo -S dpkg --purge hsa-amd-aqlprofile
-echo AH64_uh1 | sudo -S dpkg --purge rocm-dbgapi
+echo AH64_uh1 | sudo dpkg --purge rocsparse
+echo AH64_uh1 | sudo dpkg --purge hipsparse
+echo AH64_uh1 | sudo dpkg --purge rocsparse
+echo AH64_uh1 | sudo dpkg --purge hip_hcc
+echo AH64_uh1 | sudo dpkg --purge hip_samples
+echo AH64_uh1 | sudo dpkg --purge hip_doc
+echo AH64_uh1 | sudo dpkg --purge hip_base
+echo AH64_uh1 | sudo dpkg --purge hcc
+echo AH64_uh1 | sudo dpkg --purge rocm-utils
+echo AH64_uh1 | sudo dpkg --purge rocminfo
+echo AH64_uh1 | sudo dpkg --purge rocm-profiler
+echo AH64_uh1 | sudo dpkg --purge rocm-clang-ocl
+echo AH64_uh1 | sudo dpkg --purge rocm-opencl-dev
+echo AH64_uh1 | sudo dpkg --purge rocm-opencl
+echo AH64_uh1 | sudo dpkg --purge rocm-device-libs
+echo AH64_uh1 | sudo dpkg --purge rocr_debug_agent
+echo AH64_uh1 | sudo dpkg --purge hsa-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge cxlactivitylogger
+echo AH64_uh1 | sudo dpkg --purge rocprofiler-dev
+echo AH64_uh1 | sudo dpkg --purge hsa-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge hsa-ext-rocr-dev
+echo AH64_uh1 | sudo dpkg --purge hsakmt-roct-dev
+echo AH64_uh1 | sudo dpkg --purge hsakmt-roct
+echo AH64_uh1 | sudo dpkg --purge hsa-amd-aqlprofile
 
 
-
-echo AH64_uh1 | sudo -S rm -rf /opt/rocm
+echo AH64_uh1 | sudo rm -rf /opt/rocm
 
 
 
-echo AH64_uh1 | sudo -S dpkg -l | grep hsa
-echo AH64_uh1 | sudo -S dpkg -l | grep hip
-echo AH64_uh1 | sudo -S dpkg -l | grep hcc
-echo AH64_uh1 | sudo -S dpkg -l | grep rocr
-echo AH64_uh1 | sudo -S dpkg -l | grep rocm
-echo AH64_uh1 | sudo -S dpkg -l | grep rock
-
-
-sudo update-grub
-
-sudo dpkg -r 
+echo AH64_uh1 | sudo dpkg -l | grep hsa
+echo AH64_uh1 | sudo dpkg -l | grep hip
+echo AH64_uh1 | sudo dpkg -l | grep hcc
+echo AH64_uh1 | sudo dpkg -l | grep rocr
+echo AH64_uh1 | sudo dpkg -l | grep rocm
+echo AH64_uh1 | sudo dpkg -l | grep rock
 
 
 
@@ -56,31 +49,30 @@ cd ~/Desktop/
 
 mkdir package
 
-mkdir 10901 
+mkdir 10630 
 
-cd 10901
+cd 10630
 
 
-wget http://rocm-ci.amd.com/job/compute-roc-master/10901/artifact/artifacts/compute-roc-master-10901.tar.bz2
+wget http://rocm-ci.amd.com/job/compute-roc-master/10630/artifact/artifacts/compute-roc-master-10630.tar.bz2
 
 
 cd ~/Desktop/package
 
 rm -rf *
 
-cp -rf ~/Desktop/10901/compute-roc-master-10901.tar.bz2 .
+cp -rf ~/Desktop/10630/compute-roc-master-10630.tar.bz2 .
 
-tar -xvf compute-roc-master-10901.tar.bz2
+tar -xvf compute-roc-master-10630.tar.bz2
 
 aria2c deb.meta4
 
-cp -rf ~/Desktop/package/* ~/Desktop/10901
+cp -rf ~/Desktop/package/* ~/Desktop/10630
 
-echo AH64_uh1 | -S ./utils/install.sh
+./utils/install.sh
 
-rm -r ~/Desktop/10901/compute-roc-master-10901.tar.bz2
 
-echo AH64_uh1 | sudo -S reboot
+sudo reboot
 
 
 ===================================================
@@ -118,13 +110,13 @@ vi .jenkins/caffe2/bench.sh
 =============================
 
 cd /root/caffe2/
-.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench_10901.log
-.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test_10901.log
+.jenkins/caffe2/bench.sh 2>&1 | tee -a /dockerx/caffe_bench_10630.log
+.jenkins/caffe2/test.sh 2>&1 | tee -a /dockerx/caffe_test_10630.log
 
 
 cd /root/pytorch/
 export PYTORCH_TEST_WITH_ROCM=1
-python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/pytorch_test_10901.log
+python test/run_test.py --exclude autograd --verbose 2>&1 | tee -a /dockerx/pytorch_test_10630.log
 
 
 
@@ -198,6 +190,3 @@ Run the Docker Container of this image:
 =======================================
 
 FAIL DOCKER : sudo docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add video -v $HOME/dockerx:/dockerx sudo docker pull rocmqa/tf1.13-10271-py3:ub16.04
-
-
-
