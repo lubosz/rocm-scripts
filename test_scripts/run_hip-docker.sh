@@ -250,6 +250,7 @@ make clean
 make
 ./RecursiveGaussian -e 2>&1 | tee -a $cwd/hip-examples-Applications.log
 
+"
 git clone -b develop https://streamhsa:AH64_uh1@github.com/ROCmSoftwarePlatform/hipeigen
 cd hipeigen
 mkdir build
@@ -259,7 +260,7 @@ make -j8  2>&1 | tee -a $cwd/hip-eigen-build.log
 
 cd $dir/hipeigen/build
 make -j8 check -e 2>&1 | tee -a $cwd/hip-eigen-run.log
-
+"
 
 cd $dir/HIP/
 mkdir build
