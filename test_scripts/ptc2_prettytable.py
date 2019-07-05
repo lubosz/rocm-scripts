@@ -19,8 +19,8 @@ import re
 from datetime import datetime
 import sys
 import  multiprocessing as mps
-k=os.system('echo AH64_uh1 | sudo pip3 install prettytable')  #
-#k=os.system('echo AH64_uh1 | sudo pip3 install artifactory')
+k=os.system('echo AH64_uh1 | sudo pip install prettytable')  #
+#k=os.system('echo AH64_uh1 | sudo pip install artifactory')
 #from artifactory import ArtifactoryPath
 from prettytable import PrettyTable
 import subprocess as sub
