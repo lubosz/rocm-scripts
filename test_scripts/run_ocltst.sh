@@ -1,8 +1,13 @@
 mkdir -p ~/dockerx/ocltst/
 
-cd ~/Desktop/package/bin/ocltst
+rm ocltst.zip
+rm -rf ocltst
 
-export LD_LIBRARY_PATH=.
+wget http://ocltc.amd.com:8111/guestAuth/repository/download/BuildsOpenCLHsaStaging_OpenCLLc_LinuxX8664Release/lastSuccessful/opencl/tests/ocltst.zip
+
+unzip ocltst.zip && cd ocltst
+
+export LD_LIBRARY_PATH=/opt/rocm/opencl/lib/x86_64/:.
 
 ./ocltst -m oclregression.so -A oclregression.exclude 2>&1 | tee -a ~/dockerx/ocltst/oclregression.log
 ./ocltst -m ocldebugger.so -A ocldebugger.exclude 2>&1 | tee -a ~/dockerx/ocltst/ocldebugger.log
@@ -14,6 +19,6 @@ export LD_LIBRARY_PATH=.
 ./ocltst -m oclruntime.so -A oclruntime.exclude 2>&1 | tee -a ~/dockerx/ocltst/oclruntime.log
 
 
-cd ~/dockerx/ocltst
+cd /dockerx/ocltst
 
 grep -nir "Total Passed Tests:" *.log
