@@ -1,11 +1,11 @@
-mkdir -p ~/dockerx/ocltst/
+mkdir -p ~/dockerx/ocltst/ && cd ~/dockerx/ocltst/
 
 rm ocltst.zip
 rm -rf ocltst
 
 wget http://ocltc.amd.com:8111/guestAuth/repository/download/BuildsOpenCLHsaStaging_OpenCLLc_LinuxX8664Release/lastSuccessful/opencl/tests/ocltst.zip
 
-unzip ocltst.zip && cd ocltst
+unzip ocltst.zip && cd ocltst/x86_64
 
 export LD_LIBRARY_PATH=/opt/rocm/opencl/lib/x86_64/:.
 
