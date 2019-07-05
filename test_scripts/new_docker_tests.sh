@@ -10,6 +10,9 @@ python hipCUB.py 2>&1 | tee -a /dockerx/hipCUB.log
 cd /root/driver/MLSEQA_TestRepo/Libs/rocThrust
 python rocThrust.py 2>&1 | tee -a /dockerx/rocThrust.log
 
+./run_ocltst.sh
+
+"
 
 cd /root/driver/
 git clone https://github.com/ROCmSoftwarePlatform/rccl.git && cd rccl
@@ -26,3 +29,5 @@ sudo dpkg -i rccl*.deb
 cd /root/driver/
 
 git clone -b master https://github.com/ROCmSoftwarePlatform/rccl-tests.git && cd rccl-tests
+
+"
