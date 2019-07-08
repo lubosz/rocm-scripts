@@ -33,21 +33,21 @@ else
    exit 1
 fi
 
-echo " " | tee -a uva.log
+echo " " | tee -a /dockerx/uva.log
 echo "=========================[Running Half-duplex DMA Read]=========================" | tee -a uva.log
-./uva | tee -a uva.log
+./uva | tee -a /dockerx/uva.log
 
-echo " " >> uva.log
+echo " " >> /dockerx/uva.log
 echo "=========================[Running full-duplex DMA Read]=========================" | tee -a uva.log
-./uva --fullduplex | tee -a uva.log
+./uva --fullduplex | tee -a /dockerx/uva.log
 
-echo " " | tee -a uva.log
+echo " " | tee -a /dockerx/uva.log
 echo "=========================[Running Half-duplex DMA Write]=========================" | tee -a uva.log
-./uva --write | tee -a uva.log
+./uva --write | tee -a /dockerx/uva.log
 
-echo " " | tee -a uva.log
+echo " " | tee -a /dockerx/uva.log
 echo "=========================[Running full-duplex DMA Write]=========================" | tee -a uva.log
-./uva --write --fullduplex | tee -a uva.log
+./uva --write --fullduplex | tee -a /dockerx/uva.log
 
 
 RUN_PATT1='Aborted'

@@ -10,10 +10,10 @@ current=`pwd`
 if [ -e "$current/bwtest" ] ; then
 	make clean
 	echo "=========================[Building hipbwtest Test]=========================" | tee bwtest.log
-	make | tee -a bwtest.log
+	make | tee -a /dockerx/bwtest.log
 else
 	echo "=========================[Building hipbwtest Test]=========================" | tee bwtest.log
-	make | tee -a bwtest.log
+	make | tee -a /dockerx/bwtest.log
 fi
 
 if [ -e "$current/bwtest" ] ; then
@@ -35,7 +35,7 @@ fi
 
 echo " " | tee -a bwtest.log
 echo "=========================[Running hipbwtest Test]=========================" | tee -a bwtest.log
-./bwtest | tee -a bwtest.log
+./bwtest | tee -a /dockerx/bwtest.log
 
 
 RUN_PATT1='Aborted'

@@ -35,7 +35,7 @@ fi
 
 echo " " | tee -a halfduplex.log
 echo "=========================[Running hiphalfDuplex Test]=========================" | tee -a halfduplex.log
-./halfduplex | tee -a halfduplex.log
+./halfduplex | tee -a /dockerx/halfduplex.log
 
 
 RUN_PATT1='Aborted'

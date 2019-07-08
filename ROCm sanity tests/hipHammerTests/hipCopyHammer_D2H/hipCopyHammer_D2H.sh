@@ -30,7 +30,7 @@ else
 fi
 
 
-./hipCopyHammer_D2H | tee -a ~/dockerx/hipCopyHammer_D2H_run.log
+./hipCopyHammer_D2H | tee -a /dockerx/hipCopyHammer_D2H_run.log
 
 
 RUN_PATT1='Aborted'

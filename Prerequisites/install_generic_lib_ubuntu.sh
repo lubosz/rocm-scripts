@@ -34,3 +34,5 @@ echo $username | sudo apt-get -y install aria2
 echo $username | sudo apt-get -y install flex bison
 ################for miopen to build############
 echo $username | sudo apt-get install cmake
+############### gflas #####################
+echo $username | sudo apt-get install libgflags-dev
