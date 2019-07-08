@@ -38,6 +38,21 @@ echo "========================= py-test_expecttest====================="
 python test/test_expecttest.py -v 2>&1 | tee $LOGDIR/py-test_expecttest.log
 echo "========================= py-test_docs_coverage====================="
 python test/test_docs_coverage.py -v 2>&1 | tee $LOGDIR/py-test_docs_coverage.log
+echo "========================= py-test_quantized====================="
+python test/test_quantized.py -v 2>&1 | tee $LOGDIR/py-test_quantized.log
+echo "========================= py-test_logging====================="
+python test/test_logging.py -v 2>&1 | tee $LOGDIR/py-test_logging.log
+echo "========================= py-test_mkldnn====================="
+python test/test_mkldnn.py -v 2>&1 | tee $LOGDIR/py-test_mkldnn.log
+echo "========================= py-test_namedtuple_return_api====================="
+python test/test_namedtuple_return_api.py -v 2>&1 | tee $LOGDIR/py-test_namedtuple_return_api.log
+echo "========================= py-test_jit_fuser====================="
+python test/test_jit_fuser.py -v 2>&1 | tee $LOGDIR/py-test_jit_fuser.log
+echo "========================= py-test_tensorboard====================="
+python test/test_tensorboard.py -v 2>&1 | tee $LOGDIR/py-test_tensorboard.log
+echo "========================= py-test_namedtensor====================="
+python test/test_namedtensor.py -v 2>&1 | tee $LOGDIR/py-test_namedtensor.log
+
 
 
 
