@@ -31,7 +31,7 @@ else
    exit 1
 fi
 
-./hipCopyHammer_H2D | tee -a hipCopyHammer_H2D_run.log
+./hipCopyHammer_H2D | tee -a ~/dockerx/hipCopyHammer_H2D_run.log
 
 
 RUN_PATT1='Aborted'
