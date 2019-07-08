@@ -6,7 +6,7 @@
 cwd=`pwd`
 STEPS_COUNT=36
 LIBPATH="/opt/rocm/rccl/"
-TEST=$HOME/Desktop/rocm_tests/rccl-tests
+TEST=/root/driver/RCCL/build/rccl-tests
 nGPU="$(/opt/rocm/bin/rocminfo | grep GPU | wc -l)"
 OP=( sum prod min max )
 DATA=( int8 uint8 int32 uint32 int64 uint64 half float double )

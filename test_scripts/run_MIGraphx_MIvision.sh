@@ -5,7 +5,7 @@ echo ############## MIGraphX #################
 git clone https://streamhsa:AH64_uh1@github.com/RadeonOpenCompute/MLSEQA_TestRepo
 dir=/root/driver/
 cd $dir/
-sudo dpkg -i 2.	MIGraphX*.deb
+sudo dpkg -i MIGraphX*.deb
 cd $dir/MIGraphX/MLSEQA_TestRepo/Feature/MIGraphX
 sudo python migraphx_unittests.py
 cp -rf unittestSummary.log /dockerx/MIGraphX_unittest.log

@@ -6,10 +6,10 @@
 current=`pwd`
 
 LIBPATH="/opt/rocm/rccl/"
-TEST=$HOME/Desktop/rocm_tests/
+TEST=/root/driver/RCCL/build
 
-cd $HOME/Desktop/rocm_tests/
-echo "AH64_uh1" | sudo rm -rf RCCL
+cd /root/driver/
+#echo "AH64_uh1" | sudo rm -rf RCCL
 
 git clone -b rccl https://streamhsa:AH64_uh1@github.com/ROCmSoftwarePlatform/rccl-internal.git RCCL
 cd RCCL
@@ -19,9 +19,9 @@ CXX=/opt/rocm/bin/hcc cmake .. 2>&1 > RCCL-build.log
 make -j$(nproc) package 2>&1 >> RCCL-build.log
 echo "AH64_uh1" | sudo dpkg -i rccl*.deb
 
-mv RCCL-build.log $HOME/Desktop/rocm_tests/rccl-tests
-cd $HOME/Desktop/rocm_tests/
-echo "AH64_uh1" | sudo rm -rf rccl-tests
+#mv RCCL-build.log $HOME/Desktop/rocm_tests/rccl-tests
+#cd /root/driver/
+#echo "AH64_uh1" | sudo rm -rf rccl-tests
 
 git clone -b master https://streamhsa:AH64_uh1@github.com/ROCmSoftwarePlatform/rccl-tests-internal.git rccl-tests
 cd rccl-tests
