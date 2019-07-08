@@ -5,7 +5,7 @@ mkdir -p /dockerx/flower-alexnet
 rm -rf /dockerx/flower-alexnet/*
 mkdir -p /dockerx/tf-logs
 LOGDIR=/dockerx/tf-logs
-cp -rf /dockerx/scripts/preprocessing_factory.py /root/models/research/slim/preprocessing/
+cp -rf /dockerx/rocm-scripts/test_scripts/preprocessing_factory.py /root/models/research/slim/preprocessing/
 run_flower_alexnet()
 {
     echo "=======================flower-alexnet==============="
