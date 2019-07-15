@@ -19,6 +19,6 @@ export LD_LIBRARY_PATH=/opt/rocm/opencl/lib/x86_64/:.
 ./ocltst -m oclruntime.so -A oclruntime.exclude 2>&1 | tee -a ~/dockerx/ocltst/oclruntime.log
 
 
-cd /dockerx/ocltst
+cd ~/dockerx/ocltst
 
 grep -nir "Total Passed Tests:" *.log
