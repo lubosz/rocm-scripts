@@ -88,7 +88,7 @@ echo AH64_uh1 | sudo dpkg -i *.deb
 
 #============MIOpenDriver_CONV===================
 
-cd $dir/MLOpen/build_hip/bin
+cd $dir/MLOpen/build_hip
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
 ./MIOpenDriver conv -W 341 -H 79 -c 32 -n 4 -k 32 -y 5 -x 10 -p 0 -q 0 -u 2 -v 2 -t 1 -V 0 -i 1 | tee -a $logs/MIOpenDriver_run.log
 ./MIOpenDriver conv -n 1 -c 512 -H 256 -W 256 -k 6 -y 1 -x 1 -p 0 -q 0 -u 1 -v 1 -l 1 -j 1 -m conv -g 1 -t 1 2>&1 | tee -a $logs/MIOpenDriver_run.log
