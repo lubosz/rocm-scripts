@@ -1,5 +1,5 @@
 cd ~/dockerx/
-rm -rf rocm_smi_tool
+echo AH64_uh1 | sudo -S rm -rf rocm_smi_tool
 
 mkdir -p ~/dockerx/rocm_smi_tool && chmod 777 -R rocm_smi_tool && cd ~/dockerx/rocm_smi_tool
 
@@ -9,9 +9,7 @@ wget https://raw.githubusercontent.com/RadeonOpenCompute/MLSEQA_TestRepo/master/
 wget https://raw.githubusercontent.com/RadeonOpenCompute/MLSEQA_TestRepo/master/ROCM_Tools/rocm_smi_tool/rocm_smi_workload_tests.py?token=AB7ZUFQ3H3A5FJFDLGKEGKC5HGLBS -O rocm_smi_workload_tests.py
 
 echo AH64_uh1 | sudo -S python3 rocm_smi_sanity.py
-mv Results.ini rocm_smi_sanity.log
-mv rocm_smi_sanity.log ~/dockerx/
+cp rocm_smi_sanity.summary ~/dockerx/
 
 echo AH64_uh1 | sudo -S python3 rocm_smi_workload_tests.py
-mv Results.ini rocm_smi_workloads.log
-mv rocm_smi_workloads.log ~/dockerx/
+cp rocm_smi_workloads.summary ~/dockerx/
