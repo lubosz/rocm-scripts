@@ -1,3 +1,4 @@
+
 #docker image build command
 
 #| This Dockerfile provides a starting point for a ROCm installation of Tensorflow.
@@ -12,8 +13,13 @@ FROM ubuntu:18.04
 
 MAINTAINER Pramendra Kumar <pramendra.kumar@amd.com>
 
+################################## change #1 no-npi-dkms-build #####################
+ARG rocm_master=554
+##################################
+
+
+
 ARG ROCM_PATH=/opt/rocm
-ARG rocm_master
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root/
 ENV HIP_PLATFORM hcc
@@ -36,23 +42,18 @@ WORKDIR /root/driver
 #RUN wget -N "http://10.236.104.70/job/compute-roc-master/lastSuccessfulBuild/buildNumber"
 #RUN Last_success_build="$(cat buildNumber)" && echo $Last_success_build
 #RUN wget http://10.236.104.70/job/compute-roc-master/"$(cat buildNumber)"/artifact/artifacts/compute-roc-master-"$(cat buildNumber)".tar.bz2
-
 RUN rm -rf roc-master && mkdir roc-master
 WORKDIR /root/driver/roc-master
-RUN wget -np -nd -r -l 1 -A deb  http://10.216.151.220/artifactory/rocm-osdb-deb/compute-roc-master-$rocm_master/
+RUN wget -np -nd -r -l 1 -A deb http://10.216.151.220/artifactory/rocm-osdb-deb/compute-rocm-dkms-no-npi-$rocm_master/
 
-RUN wget http://13.82.220.49/rocm/apt/debian/pool/main/r/rocm-profiler/rocm-profiler_5.6.7262_amd64.deb && wget http://13.82.220.49/rocm/apt/debian/pool/main/c/cxlactivitylogger/cxlactivitylogger_5.6.7259_amd64.deb && dpkg -i hsakmt-roct*.deb hsakmt-roct-dev*.deb && dpkg -i hsa-ext-rocr-dev*.deb hsa-rocr-dev*.deb && dpkg -i rocr_debug_agent*.deb comgr*.deb && dpkg -i rocm-opencl*.deb rocm-opencl-dev*.deb rocm-smi*.deb rocm-utils*.deb rocminfo*.deb rocm-clang-ocl*.deb hip_hcc*.deb hip_base*.deb hip_samples*.deb hip_doc*.deb hcc*.deb  hsa-amd-aqlprofile*.deb rocprofiler-dev*.deb rocm-cmake*.deb rocm-device-libs*.deb rocm-profiler*.deb cxlactivitylogger*.deb rocm_bandwidth_test*.deb rccl-*.deb && rm -rf *.deb
+#RUN wget -np -nd -r -l 1 -A deb  http://10.216.151.220/artifactory/rocm-osdb-deb/compute-roc-master-$rocm_master/
 
-RUN echo "gfx900" > /opt/rocm/bin/target.lst
-RUN echo "gfx906" >> /opt/rocm/bin/target.lst
-RUN echo "gfx803" >> /opt/rocm/bin/target.lst
+
+RUN wget http://13.82.220.49/rocm/apt/debian/pool/main/r/rocm-profiler/rocm-profiler_5.6.7262_amd64.deb && wget http://13.82.220.49/rocm/apt/debian/pool/main/c/cxlactivitylogger/cxlactivitylogger_5.6.7259_amd64.deb && dpkg -i hsakmt-roct*.deb hsakmt-roct-dev*.deb && dpkg -i hsa-ext-rocr-dev*.deb hsa-rocr-dev*.deb && dpkg -i rocr_debug_agent*.deb comgr*.deb && dpkg -i rocm-opencl*.deb rocm-opencl-dev*.deb rocm-smi*.deb rocm-utils*.deb rocminfo*.deb rocm-clang-ocl*.deb hip_hcc*.deb hip_base*.deb hip_samples*.deb hip_doc*.deb hcc*.deb  hsa-amd-aqlprofile*.deb rocprofiler-dev*.deb rocm-cmake*.deb rocm-device-libs*.deb rocm-profiler*.deb cxlactivitylogger*.deb rocm_bandwidth_test*.deb rccl-*.deb rocfft*.deb rocblas*.deb hipblas*.deb rocsparse*.deb hipsparse*.deb MIOpen-HIP-*.deb miopengemm*.deb rocprim*.deb rocrand*.deb && rm -rf *.deb
+
 
 
 WORKDIR $HOME/driver/
-
-###########################Uncomment If you want to build HCC from Github################
-#RUN apt-get -y update --fix-missing --allow-insecure-repositories && DEBIAN_FRONTEND=noninteractive apt-get -y install coreutils git cmake make g++  g++-multilib gcc-multilib python findutils libelf1 libpci3 file debianutils libunwind-dev pkg-config
-#RUN git clone --recursive -b clang_tot_upgrade https://github.com/RadeonOpenCompute/hcc.git && cd hcc && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc) && make package && dpkg -i *.deb && apt-get -y install -f
 
 ###########################Uncomment If you want to build HIP from Github################
 #RUN git clone https://github.com/ROCm-Developer-Tools/HIP
@@ -61,44 +62,76 @@ WORKDIR $HOME/driver/
 #RUN patch -p1 src/hip_peer.cpp /root/driver/0001-Revert-Fixed-issue-of-GPU-device-losing-access-to-ho.patch
 #RUN echo y | ./install.sh
 #########################################################
+RUN echo "gfx900" > /opt/rocm/bin/target.lst
+RUN echo "gfx906" >> /opt/rocm/bin/target.lst
+RUN echo "gfx803" >> /opt/rocm/bin/target.lst
 
-WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocprim.git && cd rocprim && mkdir build && cd build && CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee rocPRIM_build.log && make -j16 2>&1 | tee rocPRIM_build_make.log &&  make package && dpkg -i *.deb && apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocprim.git && cd rocprim && git reset --hard 77494254aaff94751fd816a3fbb038e2ba292060 && mkdir build && cd build && CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log && make -j16 2>&1 | tee $logs/rocPRIM_build.log
 
 WORKDIR $HOME/driver/
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS && cd rocBLAS && dos2unix install.sh && ./install.sh -icd 2>&1 | tee rocblas-build.log && apt-get clean all
+
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS && cd rocBLAS && git reset --hard 63ca7f8a6d558b1b69e6fa906da9a8634f30096b && dos2unix install.sh && ./install.sh -cd 2>&1 | tee rocblas-build.log && apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS && cd hipBLAS && dos2unix install.sh && ./install.sh -icd 2>&1 | tee hipblas-build.log && apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS && cd hipBLAS && git reset --hard 8bbcc7ff3e21214974abf88d6844279354d40da0 && dos2unix install.sh && ./install.sh -cd 2>&1 | tee hipblas-build.log && apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND && cd rocRAND && rm -rf build && mkdir build && cd build && CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. && make -j32 2>&1 | tee rocrand-build.log && make package && dpkg -i rocrand*.deb
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND && cd rocRAND && git reset --hard f0eeec9e1a2f9842dfca7fd6d7d297007cbbaeb1 && rm -rf build && mkdir build && cd build && CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. && make -j32 2>&1 | tee rocrand-build.log
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT && cd rocFFT && dos2unix install.sh && ./install.sh -icd 2>&1 | tee rocfft-build.log && apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT && cd rocFFT && git reset --hard ecddd055fcd2e31a703147d5af117f9b589b25f7 && dos2unix install.sh && ./install.sh -cd 2>&1 | tee rocfft-build.log && apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE && cd /root/driver/rocSPARSE && dos2unix install.sh && ./install.sh -icd 2>&1 | tee rocsparse-build.log && apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE && cd /root/driver/rocSPARSE && git reset --hard 9d6570d6a1f0dae07da5d4452fb0d8ee7c989f77 && dos2unix install.sh && ./install.sh -cd 2>&1 | tee rocsparse-build.log && apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE && cd /root/driver/hipSPARSE && dos2unix install.sh && ./install.sh -icd 2>&1 | tee hipsparse-build.log && apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE && cd /root/driver/hipSPARSE && git reset --hard 803e3c303985869ff24180380c8a1624b68e06bb && dos2unix install.sh && ./install.sh -cd 2>&1 | tee hipsparse-build.log && apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION && cd /root/driver/rocALUTION && dos2unix install.sh && ./install.sh -icd 2>&1 | tee hipsparse-build.log && apt-get clean all
-
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION && cd /root/driver/rocALUTION && git reset --hard 4f9a26bb92f5af5efc612c199024a3963b8aea86 && dos2unix install.sh && ./install.sh -cd 2>&1 | tee hipsparse-build.log && apt-get clean all
 
 WORKDIR /root/driver
 RUN wget https://phoenixnap.dl.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip && cp -rf /root/driver/include/half.hpp /opt/rocm/include
 RUN ln -s /usr/include/x86_64-linux-gnu/openssl/opensslconf.h /usr/include/openssl
 
+WORKDIR /root/driver
+RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm && cd miopengemm && git reset --hard 6275a879995b58a6e0b8cca7b1ad8421a5e02ade && rm -rf build && mkdir build && cd build && cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. &&  make -j16
 
-RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm && cd miopengemm && rm -rf build && mkdir build && cd build && cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. &&  make -j16 && make package && dpkg -i *.deb && apt-get clean all
-
-
-RUN git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git && cd MLOpen && rm -rf build_hip && mkdir build_hip && cd build_hip && CXX=/opt/rocm/hcc/bin/hcc cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=HIP -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DBoost_USE_STATIC_LIBS=Off -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" ../. && make -j32 2>&1 | tee hipmlopen-build.log && make package 2>&1 | tee -a hipmlopen-build.log && dpkg -i *.deb 2>&1 | tee -a hipmlopen-build.log && apt-get clean all
+WORKDIR /root/driver
+RUN git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git && cd MLOpen && sed -i 's/gfx803/gfx906/g' CMakeLists.txt &&  rm -rf build_hip && mkdir build_hip && cd build_hip && CXX=/opt/rocm/hcc/bin/hcc cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=HIP -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DBoost_USE_STATIC_LIBS=Off -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" ../. && make -j32 2>&1 | tee hipmlopen-build.log && apt-get clean all
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/rccl/lib
 ENV PATH=/opt/rocm/bin:$PATH
 ENV HCC_HOME=/opt/rocm/hcc
 ENV HIP_PATH=/opt/rocm/hip
 ENV PATH=$HCC_HOME/bin:$HIP_PATH/bin:$PATH
+
+WORKDIR /root/driver
+RUN cd MLOpen && rm -rf build_ocl && mkdir build_ocl && cd build_ocl && cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=OpenCL -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DBoost_USE_STATIC_LIBS=Off -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. | tee -a mlopenocl_build.log && make -j16 | tee -a mlopenocl_build.log && make package | tee -a mlopenocl_build.log
+
+WORKDIR /root/driver
+
+#RUN apt-get -y install pkg-config protobuf-compiler libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev libatlas-base-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev python-numpy python-scipy python3-dev python-yaml python-pip libopencv-dev libfftw3-dev libelf-dev libopenblas-base libopenblas-dev
+
+#RUN git clone -b hip https://github.com/rocmsoftwareplatform/hipcaffe
+#WORKDIR /root/driver/hipcaffe
+#ENV INCLUDE_DIR=/opt/rocm/include
+#RUN cp Makefile.config.example Makefile.config
+
+##########################Uncomment for Ubuntu18.04#################################
+#RUN  sed -i 's/atlas/open/g' Makefile.config && sed -i 's/# OPENCV_VERSION := 3/OPENCV_VERSION := 3/g' Makefile.config
+###########################################################
+
+#RUN make -j16 2>&1 | tee hipcaffe_build.log && ./data/ilsvrc12/get_ilsvrc_aux.sh 2>&1 | tee -a  hipcaffe_build.log && ./scripts/download_model_binary.py models/bvlc_reference_caffenet 2>&1 | tee -a hipcaffe_build.log && ./data/cifar10/get_cifar10.sh 2>&1 | tee -a hipcaffe_build.log && ./examples/cifar10/create_cifar10.sh 2>&1 | tee -a hipcaffe_build.log && ./data/mnist/get_mnist.sh 2>&1 | tee -a hipcaffe_build.log && ./examples/mnist/create_mnist.sh 2>&1 | tee -a hipcaffe_build.log
+
+#WORKDIR /root/driver
+#RUN rm -rf rccl
+#RUN git clone https://github.com/ROCmSoftwarePlatform/rccl && cd /root/driver/rccl && mkdir build && cd build && CXX=/opt/rocm/bin/hcc cmake .. | tee rccl-build.log && make package 2>&1 | tee -a rccl-build.log && dpkg -i *.deb
+
+#WORKDIR /root/driver
+#RUN git clone https://streamhsa:AH64_uh1@github.com/ROCmSoftwarePlatform/deepbench
+#WORKDIR /root/driver/deepbench/code/amd
+#RUN sed -i 's/-O3/-O3 -I\/opt\/rocm\/include/g' Makefile && make all 2>&1 | tee deepbench_build.log
+
+WORKDIR $HOME
+
