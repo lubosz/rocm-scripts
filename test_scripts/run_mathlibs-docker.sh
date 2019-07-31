@@ -11,8 +11,8 @@ cd $dir
 ./rocBLAS/build/release/clients/staging/rocblas-test --gtest_filter=-*known_bug* 2>&1 | tee $logs/rocblas.log
 ./hipBLAS/build/release/clients/staging/hipblas-test 2>&1 | tee $logs/hipblas.log
 ./rocFFT/build/release/clients/staging/rocfft-test 2>&1 | tee $logs/rocfft.log
-./rocSPARSE/build/release/clients/tests/rocsparse-test 2>&1 | tee $logs/rocsparse-test.log
-./hipSPARSE/build/release/clients/tests/hipsparse-test 2>&1 | tee $logs/hipsparse-test.log
+./rocSPARSE/build/release/clients/staging/rocsparse-test 2>&1 | tee $logs/rocsparse-test.log
+./hipSPARSE/build/release/clients/staging/hipsparse-test 2>&1 | tee $logs/hipsparse-test.log
 
 cd $dir
 git clone -b master https://github.com/ROCmSoftwarePlatform/rocprim.git
