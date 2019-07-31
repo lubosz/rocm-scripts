@@ -21,4 +21,4 @@ export LD_LIBRARY_PATH=/opt/rocm/opencl/lib/x86_64/:.
 
 cd ~/dockerx/ocltst
 
-grep -nir "Total Passed Tests:" *.log
+timeout 1s *.log >> ocltst_summary.log
