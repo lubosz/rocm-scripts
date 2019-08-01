@@ -17,8 +17,10 @@ cd $dir
 cd $dir
 git clone -b master https://github.com/ROCmSoftwarePlatform/rocprim.git
 cd rocprim
-mkdir build
-cd build
+
+rm -rf build
+
+mkdir build && cd build
 CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log
 make -j16 2>&1 | tee $logs/rocPRIM_build.log
 
@@ -30,6 +32,6 @@ git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION.git
 cd rocALUTION
 ./install.sh -icd 2>&1 | tee $logs/rocALUTION-build.log
 
-cd $dir/rocALUTION/build/release/clients/tests
+cd $dir/rocALUTION/build/release/clients/staging
 ./rocalution-test 2>&1 | tee $logs/rocalution-test.log
 
