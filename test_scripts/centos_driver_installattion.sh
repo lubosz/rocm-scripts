@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 sudo yum clean all && sudo rm -rf /var/cache/yum
 sudo yum install -y epel-release
 sudo yum install -y dkms kernel-headers-`uname -r` kernel-devel-`uname -r`
