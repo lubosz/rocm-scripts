@@ -21,4 +21,4 @@ export LD_LIBRARY_PATH=/opt/rocm/opencl/lib/x86_64/:.
 
 cd ~/dockerx/ocltst
 
-timeout 1s *.log >> ocltst_summary.log
+timeout 1s tail -f *.log >> ocltst_summary.log
