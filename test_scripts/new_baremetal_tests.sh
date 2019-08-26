@@ -1,6 +1,6 @@
 sudo apt-get install python-prettytable
 
-cd ~/Desktop/
+cd ~/dockerx/
 
 git clone https://streamhsa:AH64_uh1@github.com/RadeonOpenCompute/MLSEQA_TestRepo
 cd MLSEQA_TestRepo/HIP/HIPinMultiprocessing/fork
