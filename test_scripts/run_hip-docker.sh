@@ -321,3 +321,5 @@ cd $dir1/gromacs/
 cd build
 make -j 8 check 2>&1 | tee -a $logs/gromacs_test.log
 
+cd ~/dockerx/rocm-scripts/test_scripts
+./hip_tests.sh
