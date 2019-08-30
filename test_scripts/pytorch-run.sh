@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/pytorch
+cd /root/pytorch
 LOGDIR=/dockerx
 export PYTORCH_TEST_WITH_ROCM=1 
 echo "========================= py-autograd====================="
@@ -52,8 +52,7 @@ echo "========================= py-test_tensorboard====================="
 python test/test_tensorboard.py -v 2>&1 | tee $LOGDIR/py-test_tensorboard.log
 echo "========================= py-test_namedtensor====================="
 python test/test_namedtensor.py -v 2>&1 | tee $LOGDIR/py-test_namedtensor.log
-
-
-
-
-
+echo "========================= py-test_dist_autograd====================="
+python test/test_dist_autograd.py -v 2>&1 | tee $LOGDIR/py-test_dist_autograd.log
+echo "========================= py-test_fake_quant====================="
+python test/test_fake_quant.py -v 2>&1 | tee $LOGDIR/py-test_fake_quant.log
