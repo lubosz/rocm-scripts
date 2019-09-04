@@ -17,17 +17,17 @@ fi
 caffe2_pypath="$(cd /usr && $PYTHON -c 'import os; import caffe2; print(os.path.dirname(os.path.realpath(caffe2.__file__)))')"
 # Resnet50
 if (( $num_gpus == 0 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --use_cpu
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --use_cpu
 fi
 if (( $num_gpus >= 1 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 1
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 1 --float16_compute --dtype float16
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1 --float16_compute --dtype float16
 fi
 if (( $num_gpus >= 2 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 2
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 2
 fi
 if (( $num_gpus >= 4 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 4
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 4
 fi
 
 # ResNext
@@ -42,7 +42,7 @@ if (( $num_gpus >= 2 )); then
     "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --resnext_num_groups 32 --resnext_width_per_group 4 --num_layers 101 --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 2
 fi
 if (( $num_gpus >= 4 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --resnext_num_groups 32 --resnext_width_per_group 4 --num_layers 101 --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 4
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --resnext_num_groups 32 --resnext_width_per_group 4 --num_layers 101 --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 4
 fi
 
 # Shufflenet
@@ -56,5 +56,5 @@ if (( $num_gpus >= 2 )); then
     "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 2 --model shufflenet
 fi
 if (( $num_gpus >= 4 )); then
-    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 4 --model shufflenet
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 4 --model shufflenet
 fi
