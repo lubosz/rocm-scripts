@@ -9,18 +9,18 @@ if [[ "${BUILD_ENVIRONMENT}" == *-android* ]]; then
 fi
 
 # Find where cpp tests and Caffe2 itself are installed
-if [[ "$BUILD_ENVIRONMENT" == *cmake* ]]; then
-  # For cmake only build we install everything into /usr/local
-  cpp_test_dir="$INSTALL_PREFIX/cpp_test"
-  ld_library_path="$INSTALL_PREFIX/lib"
+if [[ "$BUILD_ENVIRONMENT" == cmake ]]; then
+ # For cmake only build we install everything into /usr/local
+ cpp_test_dir="$INSTALL_PREFIX/cpp_test"
+ ld_library_path="$INSTALL_PREFIX/lib:/opt/rocm/lib"
 else
-  # For Python builds we install into python
-  # cd to /usr first so the python import doesn't get confused by any 'caffe2'
-  # directory in cwd
-  python_installation="$(dirname $(dirname $(cd /usr && $PYTHON -c 'import os; import caffe2; print(os.path.realpath(caffe2.__file__))')))"
-  caffe2_pypath="$python_installation/caffe2"
-  cpp_test_dir="$python_installation/torch/test"
-  ld_library_path="$python_installation/torch/lib"
+ # For Python builds we install into python
+ # cd to /usr first so the python import doesn't get confused by any 'caffe2'
+ # directory in cwd
+ python_installation="$(dirname $(dirname $(cd /usr && $PYTHON -c 'import os; import caffe2; print(os.path.realpath(caffe2.__file__))')))"
+ caffe2_pypath="$python_installation/caffe2"
+ cpp_test_dir="$python_installation/torch/test"
+ ld_library_path="$python_installation/torch/lib:/opt/rocm/lib"
 fi
 
 ################################################################################
