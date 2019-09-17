@@ -175,7 +175,7 @@ run_tf_cnn_benchmarks()
         cd $BENCHDIR
 #     MODELS="alexnet"
     MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
-	NGPUS=$(($ngpu))
+	NGPUS=$ngpu
 	ITERATIONS=50
 	BATCH_SIZE=( 1 2 4 8 16 32 64 )
        #BATCH_SIZE=(32 64)
