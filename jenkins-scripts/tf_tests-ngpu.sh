@@ -175,7 +175,7 @@ run_tf_cnn_benchmarks()
         cd $BENCHDIR
 #     MODELS="alexnet"
     MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
-	NGPUS=`expr $ngpu + 0`
+	NGPUS=`expr $ngpu + 0` 
 	ITERATIONS=50
 	BATCH_SIZE=( 1 2 4 8 16 32 64 )
        #BATCH_SIZE=(32 64)
@@ -186,8 +186,8 @@ run_tf_cnn_benchmarks()
 	do
     /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
     --print_training_accuracy=True \
-    --num_batches=${ITERATIONS} --variable_update=parameter_server --local_parameter_device=cpu \
-    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
+    --num_batches=50 --variable_update=parameter_server --local_parameter_device=cpu \
+    --num_gpus=${NGPUS} --batch_size=64  2>&1 | tee $LOGDIR/tf-$i-$j.txt
     done
     done
  
