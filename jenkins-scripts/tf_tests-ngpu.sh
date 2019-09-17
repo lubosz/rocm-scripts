@@ -175,6 +175,7 @@ run_tf_cnn_benchmarks()
         cd $BENCHDIR
 #     MODELS="alexnet"
     MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
+	echo $ngpu
 	NGPUS=`expr $ngpu + 0`
 	echo $NGPUS
 	ITERATIONS=50
