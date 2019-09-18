@@ -13,7 +13,7 @@ run_flower_alexnet()
      chmod u+x download_and_convert_data.py
     python3 download_and_convert_data.py --dataset_name=flowers --dataset_dir=/dockerx/flower-alexnet
    
-     python3 train_image_classifier.py --train_dir=/tmp/flowers-models/alexnet --dataset_name=flowers --dataset_split_name=train --dataset_dir=/dockerx/flower-alexnet --model_name=alexnet_v2 --max_number_of_steps=500 --batch_size=128 --num_clones=$ngpu 2>&1 | tee  flower-alexnet.txt
+     python3 train_image_classifier.py --train_dir=/tmp/flowers-models/alexnet --dataset_name=flowers --dataset_split_name=train --dataset_dir=/dockerx/flower-alexnet --model_name=alexnet_v2 --max_number_of_steps=500 --batch_size=128 --num_clones=$1 2>&1 | tee  flower-alexnet.txt
 
          cp -rf flower-alexnet.txt $LOGDIR
 

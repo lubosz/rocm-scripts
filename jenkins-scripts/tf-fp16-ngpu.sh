@@ -60,7 +60,7 @@ function tf_test()
   done
 }
 
-gpu_array=$ngpu
+gpu_array=$1
 modes=('False')
 models=resnet50
 batch_array=64
