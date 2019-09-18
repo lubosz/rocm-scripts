@@ -175,9 +175,13 @@ run_tf_cnn_benchmarks()
         cd $BENCHDIR
 #     MODELS="alexnet"
     MODELS="alexnet googlenet inception3 inception4 resnet50 resnet152_v2 vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
+<<<<<<< HEAD
 	echo $ngpu
 	NGPUS=`expr $ngpu + 0`
 	echo $NGPUS
+=======
+	NGPUS=$ngpu
+>>>>>>> parent of 6d1b4a0... Update tf_tests-ngpu.sh
 	ITERATIONS=50
 	BATCH_SIZE=( 1 2 4 8 16 32 64 )
        #BATCH_SIZE=(32 64)
@@ -294,6 +298,7 @@ run_tf_cnn_benchmarks_1024()
 #download_tensorflow_models
 #download_tensorflow_benchmarks
 
+<<<<<<< HEAD
 #run_convolutional_quick_test
 #run_tutorials_image_mnist
 #run_tutorials_image_cifar10
@@ -307,11 +312,20 @@ env
 echo "Before assigining ngpu:"$ngpu
 ngpu=$1
 echo "After assigining ngpu:"$ngpu
+=======
+run_convolutional_quick_test
+run_tutorials_image_mnist
+run_tutorials_image_cifar10
+run_resnet_on_cifar10
+run_imagenet_classify
+run_slim_lenet
+run_slim_cifarnet
+>>>>>>> parent of 6d1b4a0... Update tf_tests-ngpu.sh
 run_tf_cnn_benchmarks
-#run_tf_cnn_benchmarks_128
-#run_tf_cnn_benchmarks_256
-#run_tf_cnn_benchmarks_512
-#run_tf_cnn_benchmarks_1024
+run_tf_cnn_benchmarks_128
+run_tf_cnn_benchmarks_256
+run_tf_cnn_benchmarks_512
+run_tf_cnn_benchmarks_1024
 
 
 cd $LOGDIR
