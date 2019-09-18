@@ -301,8 +301,12 @@ run_tf_cnn_benchmarks_1024()
 #run_imagenet_classify
 #run_slim_lenet
 #run_slim_cifarnet
+
 env
-echo $ngpu
+
+echo "Before assigining ngpu:"$ngpu
+ngpu=$1
+echo "After assigining ngpu:"$ngpu
 run_tf_cnn_benchmarks
 #run_tf_cnn_benchmarks_128
 #run_tf_cnn_benchmarks_256
