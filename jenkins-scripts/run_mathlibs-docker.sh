@@ -41,9 +41,9 @@ cd /dockerx/
 
 git pull https://streamhsa:AH64_uh1@github.com/RadeonOpenCompute/MLSEQA_TestRepo
 
-cd MLSEQA_TestRepo/Libs/hipCUB
+cd MLSEQA_TestRepo/Libs/Mathlibs/hipCUB
 sudo python hipCUB.py 2>&1 | tee -a /dockerx/hipCUB.log
 
 
-cd /dockerx/MLSEQA_TestRepo/Libs/rocThrust
+cd /dockerx/MLSEQA_TestRepo/Libs/Mathlibs/rocThrust
 sudo python rocThrust.py 2>&1 | tee -a /dockerx/rocThrust.log
