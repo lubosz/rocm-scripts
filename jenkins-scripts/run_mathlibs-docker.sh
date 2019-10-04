@@ -49,3 +49,15 @@ sudo python hipCUB.py 2>&1 | tee -a /dockerx/hipCUB.log
 
 cd /dockerx/MLSEQA_TestRepo/Libs/Mathlibs/rocThrust
 sudo python rocThrust.py 2>&1 | tee -a /dockerx/rocThrust.log
+
+##################### rocSOLVER #######################
+
+cd $dir
+git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER
+cd rocSOLVER && mkdir build && cd build
+CXX=/opt/rocm/bin/hcc cmake ..
+make -j$(nproc)
+
+cd clients/staging
+
+./rocsolver-test 2>&1 | tee -a /dockerx/rocSOLVER.log
