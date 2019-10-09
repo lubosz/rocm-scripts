@@ -1,7 +1,7 @@
 echo AH64_uh1 | sudo -S apt update
 echo y | sudo apt autoremove rocm-opencl
-echo y | sudo apt autoremove rocm-dkms
-echo y | sudo apt autoremove rock-dkms
+
+echo y | sudo apt purge rock-dkms
 
 echo y | sudo rm -rf /opt/rocm
 
@@ -18,6 +18,9 @@ echo AH64_uh1 | sudo  rpm -qa | grep hip
 echo AH64_uh1 | sudo  rpm -qa | grep rock
 echo AH64_uh1 | sudo  rpm -qa | grep rocm
 echo AH64_uh1 | sudo  rpm -qa | grep rocr
+echo AH64_uh1 | sudo  rpm -qa | grep roct
+echo AH64_uh1 | sudo  rpm -qa | grep rocp
+echo AH64_uh1 | sudo  rpm -qa | grep miopen
 
 sudo rpm -qa | grep hsa
 
@@ -29,6 +32,8 @@ echo AH64_uh1 | sudo -S dpkg -l | grep hcc
 echo AH64_uh1 | sudo -S dpkg -l | grep rocr
 echo AH64_uh1 | sudo -S dpkg -l | grep rocm
 echo AH64_uh1 | sudo -S dpkg -l | grep rock
+echo AH64_uh1 | sudo -S dpkg -l | grep roct
+echo AH64_uh1 | sudo -S dpkg -l | grep rocp
 echo AH64_uh1 | sudo -S dpkg -l | grep miopen
 
 sudo apt purge rocm-opencl
