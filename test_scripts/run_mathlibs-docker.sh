@@ -8,7 +8,7 @@ ctest --output-on-failure 2>&1 | tee $logs/rocrand-ut.log
 ./benchmark/benchmark_rocrand_kernel --engine all --dis all 2>&1 | tee $logs/bm_rocrand_kernal.log
 ./benchmark/benchmark_rocrand_generate --engine all --dis all 2>&1 | tee $logs/bm_rocrand_generate.log
 cd $dir
-./rocBLAS/build/release/clients/staging/rocblas-test --gtest_filter=-*known_bug* 2>&1 | tee $logs/rocblas.log
+#./rocBLAS/build/release/clients/staging/rocblas-test --gtest_filter=-*known_bug* 2>&1 | tee $logs/rocblas.log
 ./hipBLAS/build/release/clients/staging/hipblas-test 2>&1 | tee $logs/hipblas.log
 ./rocFFT/build/release/clients/staging/rocfft-test 2>&1 | tee $logs/rocfft.log
 ./rocSPARSE/build/release/clients/staging/rocsparse-test 2>&1 | tee $logs/rocsparse-test.log
