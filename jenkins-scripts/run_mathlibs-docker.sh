@@ -45,8 +45,9 @@ cd MLSEQA_TestRepo/Libs/Mathlibs/hipCUB
 sudo python hipCUB.py 2>&1 | tee -a /dockerx/hipCUB.log
 
 
-cd /dockerx/MLSEQA_TestRepo/Libs/Mathlibs/rocThrust
-sudo python rocThrust.py 2>&1 | tee -a /dockerx/rocThrust.log
+cd /dockerx/MLSEQA_TestRepo/Libs/Mathlibs/rocTHRUST
+sudo rm -rf *.ini
+sudo python rocTHRUST.py 2>&1 | tee -a /dockerx/rocTHRUST.log
 
 ##################### rocSOLVER #######################
 
