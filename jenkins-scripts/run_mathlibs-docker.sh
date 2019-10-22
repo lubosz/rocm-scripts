@@ -1,6 +1,6 @@
 #!/bin/bash
 current=`pwd`
-dir=/root/driver
+dir=/home
 logs=/dockerx
 
 cd $dir/rocRAND/build
