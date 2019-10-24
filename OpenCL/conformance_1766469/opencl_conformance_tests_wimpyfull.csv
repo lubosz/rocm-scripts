@@ -114,3 +114,4 @@ Mipmaps (Kernel),images/kernel_read_write/test_image_streams test_mipmaps CL_FIL
 Mipmaps (clCopyImage),images/clCopyImage/test_cl_copy_images test_mipmaps
 Mipmaps (clReadWriteImage),images/clReadWriteImage/test_cl_read_write_images test_mipmaps
 Subgroups,subgroups/test_subgroups
+
