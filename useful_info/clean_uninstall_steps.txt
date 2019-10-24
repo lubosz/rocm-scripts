@@ -36,6 +36,17 @@ echo AH64_uh1 | sudo -S dpkg -l | grep roct
 echo AH64_uh1 | sudo -S dpkg -l | grep rocp
 echo AH64_uh1 | sudo -S dpkg -l | grep miopen
 
+
+zypper search hsa
+echo AH64_uh1 | sudo -S dpkg -l | grep hip
+echo AH64_uh1 | sudo -S dpkg -l | grep hcc
+echo AH64_uh1 | sudo -S dpkg -l | grep rocr
+echo AH64_uh1 | sudo -S dpkg -l | grep rocm
+echo AH64_uh1 | sudo -S dpkg -l | grep rock
+echo AH64_uh1 | sudo -S dpkg -l | grep roct
+echo AH64_uh1 | sudo -S dpkg -l | grep rocp
+echo AH64_uh1 | sudo -S dpkg -l | grep miopen
+
 sudo apt purge rocm-opencl
 
 cd /var/lib/dpkg/info/
