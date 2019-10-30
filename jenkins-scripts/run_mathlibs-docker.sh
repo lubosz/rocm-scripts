@@ -35,8 +35,6 @@ cd rocALUTION
 cd $dir/rocALUTION/build/release/clients/staging
 ./rocalution-test 2>&1 | tee $logs/rocalution-test.log
 
-sudo apt-get install python-prettytable
-
 
 ##################### hipCUB #######################
 
