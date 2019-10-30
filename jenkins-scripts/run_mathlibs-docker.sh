@@ -37,26 +37,31 @@ cd $dir/rocALUTION/build/release/clients/staging
 
 sudo apt-get install python-prettytable
 
-cd /dockerx/
 
-git pull https://streamhsa:AH64_uh1@github.com/RadeonOpenCompute/MLSEQA_TestRepo
+##################### hipCUB #######################
 
-cd MLSEQA_TestRepo/Libs/Mathlibs/hipCUB
-sudo python hipCUB.py 2>&1 | tee -a /dockerx/hipCUB.log
+cd $dir/hipCUB/
+rm -rf build && mkdir build && cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
+make -j$(nproc)
+ctest --output-on-failure 2>&1 | tee $logs/hipCUB.log
 
 
-cd /dockerx/MLSEQA_TestRepo/Libs/Mathlibs/rocTHRUST
-sudo rm -rf *.ini
-sudo python rocTHRUST.py 2>&1 | tee -a /dockerx/rocTHRUST.log
+##################### rocTHRUST #######################
+
+cd $dir/rocTHRUST/
+rm -rf build && mkdir build && cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
+make -j$(nproc)
+ctest --output-on-failure 2>&1 | tee $logs/rocTHRUST.log
 
 ##################### rocSOLVER #######################
 
-cd $dir
-git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER
-cd rocSOLVER && mkdir build && cd build
+cd $dir/rocSOLVER/
+rm -rf build && mkdir build && cd build
 CXX=/opt/rocm/bin/hcc cmake ..
 make -j$(nproc)
 
 cd clients/staging
 
-./rocsolver-test 2>&1 | tee -a /dockerx/rocSOLVER.log
+./rocsolver-test 2>&1 | tee -a $logs/rocSOLVER.log
