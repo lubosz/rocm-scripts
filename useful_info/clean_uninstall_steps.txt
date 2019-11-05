@@ -1,5 +1,5 @@
 echo AH64_uh1 | sudo -S apt update
-echo y | sudo apt autoremove rocm-opencl
+sudo apt autoremove -y rocm-opencl
 
 echo y | sudo apt purge rock-dkms
 
