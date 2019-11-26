@@ -37,7 +37,7 @@ ARG PATH=$HCC_HOME/bin:$HIP_PATH/bin:$PATH
 RUN echo "gfx908" >> /opt/rocm/bin/target.lst
 
 # Clone TF
-RUN rm -rf /opt/rocm/include/thrust && dpkg -r rocprim rocalution
+RUN rm -rf /opt/rocm/include/thrust && dpkg -r hipcub rocthrust rocprim rocalution
 RUN cd /root  && git clone -b r1.14-rocm https://github.com/ROCmSoftwarePlatform/tensorflow-upstream tensorflow
 WORKDIR /root/tensorflow
 
