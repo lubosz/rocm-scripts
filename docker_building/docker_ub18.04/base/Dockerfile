@@ -1,4 +1,3 @@
-
 #docker image build command
 
 #| This Dockerfile provides a starting point for a ROCm installation of Tensorflow.
@@ -14,7 +13,7 @@ FROM ubuntu:18.04
 MAINTAINER Pramendra Kumar <pramendra.kumar@amd.com>
 
 ################################## change #1 no-npi-dkms-build #####################
-ARG rocm_master=1534
+ARG rocm_master=1571
 ##################################
 
 
@@ -32,6 +31,9 @@ RUN cp -rf /root/apt/resolv.conf /etc/
 RUN apt-get clean all
 
 # Install required python2 packages
+
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/us.archive.ubuntu.com/g' /etc/apt/sources.list
+
 RUN apt-get -y update --fix-missing --allow-insecure-repositories ; DEBIAN_FRONTEND=noninteractive apt-get install -y git dkms cmake flex bison aria2 check xsltproc cifs-utils vim ssh dos2unix  python-pip-whl libpci3 libelf1 g++-multilib gcc-multilib libunwind-dev libnuma-dev bzip2 sudo ; apt-get -y update ; apt-get -y install libboost-program-options-dev libfftw3-dev cmake-qt-gui zip ; apt-get -y install libelf-dev ; apt-get -y install libssl-dev libboost-all-dev ; apt-get clean all ;  rm -rf /var/lib/apt/lists/*
 
 
@@ -71,7 +73,7 @@ RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocPRIM.git ; cd
 
 WORKDIR $HOME/driver/
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 5d70aa3c2aba39518d91615e6751687c78438d71 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 279f28287cd6f3201acfd471195586b80a0848dc ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
 
 WORKDIR /root/driver
 RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS ; cd hipBLAS ; git reset --hard ef2ee60927a6efca8ebde85536fe4306b6d40098 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipblas-build.log ; apt-get clean all
@@ -83,7 +85,7 @@ WORKDIR /root/driver
 RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT ; cd rocFFT ; git reset --hard 12456d5e5f369a3f795808948cac471dfac376b1 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocfft-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard 1b26112206369d2d432abdaa23f714c4be7e7cfa ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard aee785ee5d53f74f75dc4c87387c12ee52e41820 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
 
 WORKDIR /root/driver
 RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /root/driver/hipSPARSE ; git reset --hard f98f82eddb9eb71dd06ff43d5b96953a8a2cadfb ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipsparse-build.log ; apt-get clean all
@@ -91,11 +93,17 @@ RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /
 WORKDIR /root/driver
 RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION ; cd /root/driver/rocALUTION ; git reset --hard 2382876a699269f6fb2aa1a9a7cbebbadc5c8971 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocalution-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard c986b97395d4a6cbacc7a4600d11bdf389de639a ; dos2unix install ; ./install -ict 2>&1 | tee rocthrust-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard c986b97395d4a6cbacc7a4600d11bdf389de639a ; 
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 5a9f2b1c04f09eaccfa8b990b36aa6c86dee297d ; dos2unix install ; ./install -ict 2>&1 | tee hipcub-build.log ; apt-get clean all
+#dos2unix install ; ./install -ict 2>&1 | tee rocthrust-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard 0157c196ee63b9397428b2b759ae54ac03aff8ff ; dos2unix install ; ./install -ict 2>&1 | tee rocsolver-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 5a9f2b1c04f09eaccfa8b990b36aa6c86dee297d ; 
+
+#dos2unix install ; ./install -ict 2>&1 | tee hipcub-build.log ; apt-get clean all
+
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard 0157c196ee63b9397428b2b759ae54ac03aff8ff ; 
+
+#dos2unix install ; ./install -ict 2>&1 | tee rocsolver-build.log ; apt-get clean all
 
 WORKDIR /root/driver
 RUN rm -rf half.hpp ; wget https://phoenixnap.dl.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip ; unzip *.zip ; cp -rf /root/driver/include/half.hpp /opt/rocm/include
@@ -105,7 +113,7 @@ WORKDIR /root/driver
 RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm ; cd miopengemm ; git reset --hard 6275a879995b58a6e0b8cca7b1ad8421a5e02ade ; rm -rf build ; mkdir build ; cd build ; cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. ;  make -j$(nproc)
 
 WORKDIR /root/driver
-RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard d7f182a27d36a4fe8a0e5cb916811cd81d7f2008
+RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard b69a2c2b23bf8f7be335fa0ec42c39493a54dbed
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/rccl/lib
 ENV PATH=/opt/rocm/bin:$PATH
@@ -141,4 +149,3 @@ WORKDIR /root/driver
 #RUN sed -i 's/-O3/-O3 -I\/opt\/rocm\/include/g' Makefile ; make all 2>&1 | tee deepbench_build.log
 
 WORKDIR $HOME
-
