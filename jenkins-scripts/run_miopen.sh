@@ -17,14 +17,14 @@ rm -rf *
 #To build MIOpen with HIP backend
 CXX=/opt/rocm/hcc/bin/hcc cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=HIP -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DBoost_USE_STATIC_LIBS=Off -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" .. | tee -a mlopenhip_build.log
 
-make -j16 | tee -a mlopenhip_build.log
+make -j$(nproc) | tee -a mlopenhip_build.log
 make package | tee -a mlopenhip_build.log
 echo AH64_uh1 | sudo dpkg -i *.deb
 
 cd $dir/MLOpen/build_hip
 
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
-make check -j16 2>&1| tee $logs/mlopen-ut-hip.log
+make check -j$(nproc) 2>&1| tee $logs/mlopen-ut-hip.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
 
 
@@ -41,14 +41,14 @@ rm -rf *
 #To build MIOpen with OpenCL backend 
 cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=OpenCL -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DBoost_USE_STATIC_LIBS=Off -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. | tee -a mlopenocl_build.log
 
-make -j16 | tee -a mlopenocl_build.log
+make -j$(nproc) | tee -a mlopenocl_build.log
 make package | tee -a mlopenocl_build.log
 echo AH64_uh1 | sudo dpkg -i *.deb
 
 
 cd $dir/MLOpen/build_ocl
 export MIOPEN_CONV_PRECISE_ROCBLAS_TIMING=0
-make check -j16 2>&1| tee $logs/mlopen-ut-ocl.log
+make check -j$(nproc) 2>&1| tee $logs/mlopen-ut-ocl.log
 unset MIOPEN_CONV_PRECISE_ROCBLAS_TIMING
 
 sudo dpkg -r miopen-opencl
