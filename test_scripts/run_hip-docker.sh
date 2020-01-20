@@ -267,9 +267,9 @@ cd $dir/HIP/
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install  2>&1 | tee -a $logs/hip_directedtests_build.log
-make -j8  2>&1 | tee -a $logs/hip_directedtests_build.log
+make -j $(nproc)  2>&1 | tee -a $logs/hip_directedtests_build.log
 make install  2>&1 | tee -a $logs/hip_directedtests_build.log
-make check -j8 -e 2>&1 | tee -a $logs/hip_directedtests.log
+make check -j $(nproc) -e 2>&1 | tee -a $logs/hip_directedtests.log
 
 echo "======================computeapps=============================="
 echo "======================comd-amp=============================="
