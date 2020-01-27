@@ -96,6 +96,8 @@ if [[ $BUILD_ENVIRONMENT == *-rocm* ]]; then
   # On ROCm, RCCL (distributed) development isn't complete.
   # https://github.com/ROCmSoftwarePlatform/rccl
   rocm_ignore_test+=("--ignore $caffe2_pypath/python/data_parallel_model_test.py")
+  rocm_ignore_test+=("--ignore $caffe2_pypath/python/operator_test/checkpoint_test.py")
+rocm_ignore_test+=("--ignore $caffe2_pypath/python/dataio_test.py")
 fi
 
 # NB: Warnings are disabled because they make it harder to see what
