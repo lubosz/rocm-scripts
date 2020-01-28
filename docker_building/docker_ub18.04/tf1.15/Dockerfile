@@ -37,8 +37,7 @@ ARG PATH=$HCC_HOME/bin:$HIP_PATH/bin:$PATH
 RUN echo "gfx908" >> /opt/rocm/bin/target.lst
 
 # Clone TF
-RUN rm -rf /opt/rocm/include/thrust && dpkg -r hipcub rocthrust rocprim rocalution
-RUN cd /root  && git clone -b r1.14-rocm https://github.com/ROCmSoftwarePlatform/tensorflow-upstream tensorflow
+RUN cd /root  && git clone -b r1.15-rocm https://github.com/ROCmSoftwarePlatform/tensorflow-upstream tensorflow
 WORKDIR /root/tensorflow
 
 # Build TF for python2
@@ -50,7 +49,7 @@ WORKDIR /root/tensorflow
 
 # Build TF for python3
 #RUN sed -i 's/tensorflow-1.10.0-cp35-cp35m-linux_x86_64.whl/tensorflow-*.whl/g' build_rocm_xla_python3
-RUN /root/tensorflow/build_rocm_python3 2>&1 | tee tf1.14-build.log
+RUN /root/tensorflow/build_rocm_xla_python3 2>&1 | tee tf1.15_xla-build.log
 
 #RUN cd $HOME/ && git clone https://github.com/tensorflow/models.git
 

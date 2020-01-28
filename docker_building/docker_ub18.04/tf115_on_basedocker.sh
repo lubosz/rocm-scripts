@@ -10,8 +10,8 @@ echo $rocm_base_image
 
 
 # Build the tensorflow 1.14 image
-tensorflow_114_image=rocmqa/tf1.14:"$driver"-py3-ub18.04
-docker build -f ./tf1.14/Dockerfile ./tf1.14 --build-arg base_image=${rocm_base_image} --no-cache -t ${tensorflow_114_image}
+tensorflow_115_image=rocmqa/tf1.15:"$driver"-py3-ub18.04
+docker build -f ./tf1.15/Dockerfile ./tf1.15 --build-arg base_image=${rocm_base_image} --no-cache -t ${tensorflow_115_image}
 
 # Build the tensorflow 1.14 XLA image
 #tensorflow_114xla_image=computecqe/tf1.14xla-"$driver":ub16.04

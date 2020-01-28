@@ -13,7 +13,7 @@ FROM ubuntu:18.04
 MAINTAINER Pramendra Kumar <pramendra.kumar@amd.com>
 
 ################################## change #1 no-npi-dkms-build #####################
-ARG rocm_master=1571
+ARG rocm_master=1760
 ##################################
 
 
@@ -34,7 +34,7 @@ RUN apt-get clean all
 
 RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/us.archive.ubuntu.com/g' /etc/apt/sources.list
 
-RUN apt-get -y update --fix-missing --allow-insecure-repositories ; DEBIAN_FRONTEND=noninteractive apt-get install -y git dkms cmake flex bison aria2 check xsltproc cifs-utils vim ssh dos2unix  python-pip-whl libpci3 libelf1 g++-multilib gcc-multilib libunwind-dev libnuma-dev bzip2 sudo ; apt-get -y update ; apt-get -y install libboost-program-options-dev libfftw3-dev cmake-qt-gui zip ; apt-get -y install libelf-dev ; apt-get -y install libssl-dev libboost-all-dev ; apt-get clean all ;  rm -rf /var/lib/apt/lists/*
+RUN apt-get -y update --fix-missing --allow-insecure-repositories ; DEBIAN_FRONTEND=noninteractive apt-get install -y git dkms cmake flex bison aria2 check xsltproc cifs-utils vim ssh dos2unix  python-pip-whl libpci3 libelf1 g++-multilib gcc-multilib libunwind-dev libnuma-dev bzip2 sudo ; apt-get -y update ; apt-get install -y libfile-basedir-perl libfile-copy-recursive-perl libfile-listing-perl libfile-which-perl ; apt-get -y install libboost-program-options-dev libfftw3-dev cmake-qt-gui zip ; apt-get -y install libelf-dev ; apt-get -y install libssl-dev libboost-all-dev ; apt-get clean all ;  rm -rf /var/lib/apt/lists/*
 
 
 
@@ -46,7 +46,7 @@ WORKDIR /root/driver
 #RUN wget http://10.236.104.70/job/compute-roc-master/"$(cat buildNumber)"/artifact/artifacts/compute-roc-master-"$(cat buildNumber)".tar.bz2
 RUN rm -rf roc-master ; mkdir roc-master
 WORKDIR /root/driver/roc-master
-RUN wget -np -nd -r -l 1 -A deb http://10.216.151.220/artifactory/rocm-osdb-deb/compute-rocm-dkms-no-npi-$rocm_master/
+RUN wget -np -nd -r -l 1 -A deb http://compute-artifactory.amd.com/artifactory/rocm-osdb-deb/compute-rocm-dkms-no-npi-$rocm_master/
 
 #RUN wget -np -nd -r -l 1 -A deb  http://10.216.151.220/artifactory/rocm-osdb-deb/compute-roc-master-$rocm_master/
 
@@ -54,7 +54,7 @@ RUN wget -np -nd -r -l 1 -A deb http://10.216.151.220/artifactory/rocm-osdb-deb/
 #RUN wget http://13.82.220.49/rocm/apt/debian/pool/main/r/rocm-profiler/rocm-profiler_5.6.7262_amd64.deb ; wget http://13.82.220.49/rocm/apt/debian/pool/main/c/cxlactivitylogger/cxlactivitylogger_5.6.7259_amd64.deb ; dpkg -i hsakmt-roct*.deb hsakmt-roct-dev*.deb ; dpkg -i hsa-ext-rocr-dev*.deb hsa-rocr-dev*.deb ; dpkg -i rocm-debug-agent*.deb comgr*.deb ; dpkg -i rocm-opencl*.deb rocm-opencl-dev*.deb rocm-smi*.deb rocm-utils*.deb rocminfo*.deb rocm-clang-ocl*.deb hip_hcc*.deb hip_base*.deb hip_samples*.deb hip_doc*.deb hcc*.deb  hsa-amd-aqlprofile*.deb rocprofiler-dev*.deb rocm-cmake*.deb rocm-device-libs*.deb rocm-profiler*.deb cxlactivitylogger*.deb rocm-bandwidth-test*.deb rccl-*.deb rocfft*.deb rocblas*.deb hipblas*.deb rocsparse*.deb hipsparse*.deb MIOpen-HIP-*.deb miopengemm*.deb rocprim*.deb rocalution*.deb rocrand*.deb rocthrust*.deb hipcub*.deb rocsolver*.deb ; rm -rf *.deb
 
 
-RUN wget http://13.82.220.49/rocm/apt/debian/pool/main/r/rocm-profiler/rocm-profiler_5.6.7262_amd64.deb ; wget http://13.82.220.49/rocm/apt/debian/pool/main/c/cxlactivitylogger/cxlactivitylogger_5.6.7259_amd64.deb ; dpkg -i hsakmt-roct*.deb hsakmt-roct-dev*.deb ; dpkg -i hsa-ext-rocr-dev*.deb hsa-rocr-dev*.deb ; dpkg -i rocm-debug-agent*.deb comgr*.deb ; dpkg -i rocm-opencl*.deb rocm-opencl-dev*.deb rocm-smi*.deb rocm-utils*.deb rocminfo*.deb rocm-clang-ocl*.deb hip_hcc*.deb hip_base*.deb hip_samples*.deb hip_doc*.deb hcc*.deb  hsa-amd-aqlprofile*.deb rocprofiler-dev*.deb rocm-cmake*.deb rocm-device-libs*.deb rocm-profiler*.deb cxlactivitylogger*.deb rocm-bandwidth-test*.deb rccl-*.deb rocfft-*.deb rocblas-*.deb hipblas-*.deb rocsparse-*.deb hipsparse-*.deb MIOpen-HIP-*.deb miopengemm-*.deb rocprim-*.deb rocalution-*.deb rocrand*.deb rocsolver*.deb rocm-dev*.deb ; rm -rf *.deb
+RUN wget http://13.82.220.49/rocm/apt/debian/pool/main/r/rocm-profiler/rocm-profiler_5.6.7262_amd64.deb ; wget http://13.82.220.49/rocm/apt/debian/pool/main/c/cxlactivitylogger/cxlactivitylogger_5.6.7259_amd64.deb ; dpkg -i hsakmt-roct*.deb hsakmt-roct-dev*.deb ; dpkg -i hsa-ext-rocr-dev*.deb hsa-rocr-dev*.deb ; dpkg -i rocm-debug-agent*.deb comgr*.deb ; dpkg -i rocm-opencl*.deb rocm-opencl-dev*.deb rocm-smi*.deb rocm-utils*.deb rocminfo*.deb rocm-clang-ocl*.deb hip-hcc*.deb hip-base*.deb hip-samples*.deb hip-doc*.deb hcc*.deb  hsa-amd-aqlprofile*.deb rocprofiler-dev*.deb rocm-cmake*.deb rocm-device-libs*.deb rocm-profiler*.deb roctracer-dev*.deb cxlactivitylogger*.deb rocm-bandwidth-test*.deb rccl-*.deb rocfft-*.deb rocblas-*.deb hipblas-*.deb rocsparse-*.deb hipsparse-*.deb MIOpen-HIP-*.deb miopengemm-*.deb rocprim-*.deb rocalution-*.deb rocrand*.deb rocthrust*.deb hipcub*.deb rocsolver*.deb rocm-dev*.deb ; rm -rf *.deb
 
 WORKDIR $HOME/driver/
 
@@ -67,41 +67,42 @@ WORKDIR $HOME/driver/
 #########################################################
 RUN echo "gfx900" > /opt/rocm/bin/target.lst
 RUN echo "gfx906" >> /opt/rocm/bin/target.lst
+RUN echo "gfx908" >> /opt/rocm/bin/target.lst
 RUN echo "gfx803" >> /opt/rocm/bin/target.lst
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocPRIM.git ; cd rocPRIM ; git reset --hard 22d413d53f181733d2b09020fc9dcc52c7d948c8 ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log ; make -j$(nproc) 2>&1 | tee $logs/rocPRIM_build.log
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocPRIM.git ; cd rocPRIM ; git reset --hard b85751baa8f216a16dfca4fdd85c74b2674b18b6 ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log ; make -j$(nproc) 2>&1 | tee $logs/rocPRIM_build.log
 
 WORKDIR $HOME/driver/
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 279f28287cd6f3201acfd471195586b80a0848dc ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
+RUN rm -rf rocBLAS ; git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 5a0b03490a611134a91677f5bc7f861f41e5e44a ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS ; cd hipBLAS ; git reset --hard ef2ee60927a6efca8ebde85536fe4306b6d40098 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipblas-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS ; cd hipBLAS ; git reset --hard da8f5a2fc8673896040349bf3853fc9cccae33d9 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipblas-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND ; cd rocRAND ; git reset --hard 9d7cebfc144e10e2c3b62cd4039600749f42e8a5 ; rm -rf build ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. ; make -j$(nproc) 2>&1 | tee rocrand-build.log
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND ; cd rocRAND ; git reset --hard b9f838b78c6a8d034ce31c700ab44b6b2ddc87f6 ; rm -rf build ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. ; make -j$(nproc) 2>&1 | tee rocrand-build.log
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT ; cd rocFFT ; git reset --hard 12456d5e5f369a3f795808948cac471dfac376b1 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocfft-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT ; cd rocFFT ; git reset --hard ebb61cffc625e1bb8d36a4128846da663789fce9 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocfft-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard aee785ee5d53f74f75dc4c87387c12ee52e41820 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard 3f9898495459c6984cb6b8bd35b3676f1c3e9878 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /root/driver/hipSPARSE ; git reset --hard f98f82eddb9eb71dd06ff43d5b96953a8a2cadfb ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipsparse-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /root/driver/hipSPARSE ; git reset --hard 037a8b67a82230571545f1353c2e21aaf8875edc ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipsparse-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION ; cd /root/driver/rocALUTION ; git reset --hard 2382876a699269f6fb2aa1a9a7cbebbadc5c8971 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocalution-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION ; cd /root/driver/rocALUTION ; git reset --hard 8fd80ce877e063e0c176c49de8599769ef0d2c52 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocalution-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard c986b97395d4a6cbacc7a4600d11bdf389de639a ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard 957b1e9f9caa89d8ac259f56d10e47bb4d4898e6 ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee rocthrust-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 5a9f2b1c04f09eaccfa8b990b36aa6c86dee297d ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 6ee0aed4ba828611791800c136d3c95e471f7c6e ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee hipcub-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard 0157c196ee63b9397428b2b759ae54ac03aff8ff ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard 94923ca5aa5b49723f121752ad8bcc70450d6527 ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee rocsolver-build.log ; apt-get clean all
 
@@ -113,7 +114,7 @@ WORKDIR /root/driver
 RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm ; cd miopengemm ; git reset --hard 6275a879995b58a6e0b8cca7b1ad8421a5e02ade ; rm -rf build ; mkdir build ; cd build ; cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. ;  make -j$(nproc)
 
 WORKDIR /root/driver
-RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard b69a2c2b23bf8f7be335fa0ec42c39493a54dbed
+RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard 069d871aed4a9a2392b694ed7e05000a133ec7a6
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/rccl/lib
 ENV PATH=/opt/rocm/bin:$PATH
