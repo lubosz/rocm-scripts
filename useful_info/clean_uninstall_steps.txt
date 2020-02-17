@@ -258,3 +258,4 @@ FAIL DOCKER : sudo docker run -it --network=host --device=/dev/kfd --device=/dev
 
 
 
+1.	Caffe2 python tests-4 tests failed (Please find the attached log)-(test_extract_simple,test_cached_reader,test_db_file_reader,testCheckpoint)

@@ -12,6 +12,8 @@ wget https://raw.githubusercontent.com/ARM-software/ComputeLibrary/master/includ
 
 cp /dockerx/half.hpp /opt/rocm/include/
 
+zypper install -y wget sqlite3-devel libboost_filesystem1_66_0-devel
+
 #============MIOpen_HIP===================
 
 sudo rpm -ev miopen-hip
@@ -24,10 +26,6 @@ rm -rf build && rm -rf build2
 mkdir -p build_hip && cd build_hip
 
 rm -rf *
-
-zypper install -y wget
-zypper install -y sqlite3-devel
-zypper install -y libboost_filesystem1_66_0-devel
 
 #To build MIOpen with HIP backend
 CXX=/opt/rocm/hcc/bin/hcc cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=HIP -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DBoost_USE_STATIC_LIBS=Off -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" .. | tee -a mlopenhip_build.log

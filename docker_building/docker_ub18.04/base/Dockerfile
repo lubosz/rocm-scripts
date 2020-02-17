@@ -13,7 +13,7 @@ FROM ubuntu:18.04
 MAINTAINER Pramendra Kumar <pramendra.kumar@amd.com>
 
 ################################## change #1 no-npi-dkms-build #####################
-ARG rocm_master=1760
+ARG rocm_master=2004
 ##################################
 
 
@@ -46,7 +46,7 @@ WORKDIR /root/driver
 #RUN wget http://10.236.104.70/job/compute-roc-master/"$(cat buildNumber)"/artifact/artifacts/compute-roc-master-"$(cat buildNumber)".tar.bz2
 RUN rm -rf roc-master ; mkdir roc-master
 WORKDIR /root/driver/roc-master
-RUN wget -np -nd -r -l 1 -A deb http://compute-artifactory.amd.com/artifactory/rocm-osdb-deb/compute-rocm-dkms-no-npi-$rocm_master/
+RUN wget -np -nd -r -l 1 -A deb http://compute-artifactory.amd.com/artifactory/rocm-osdb-deb/compute-rocm-dkms-no-npi-$rocm_master/ ; rm -rf *clients*
 
 #RUN wget -np -nd -r -l 1 -A deb  http://10.216.151.220/artifactory/rocm-osdb-deb/compute-roc-master-$rocm_master/
 
@@ -70,39 +70,39 @@ RUN echo "gfx906" >> /opt/rocm/bin/target.lst
 RUN echo "gfx908" >> /opt/rocm/bin/target.lst
 RUN echo "gfx803" >> /opt/rocm/bin/target.lst
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocPRIM.git ; cd rocPRIM ; git reset --hard b85751baa8f216a16dfca4fdd85c74b2674b18b6 ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log ; make -j$(nproc) 2>&1 | tee $logs/rocPRIM_build.log
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocPRIM.git ; cd rocPRIM ; git reset --hard 5fa0c79fbb199f83c5202d9e218311a78335a1f4 ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc cmake -DBUILD_BENCHMARK=OFF -DDISABLE_WERROR=ON ../. 2>&1 | tee $logs/rocPRIM_build.log ; make -j$(nproc) 2>&1 | tee $logs/rocPRIM_build.log
 
 WORKDIR $HOME/driver/
 
-RUN rm -rf rocBLAS ; git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 5a0b03490a611134a91677f5bc7f861f41e5e44a ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
+RUN rm -rf rocBLAS ; git clone -b master https://github.com/ROCmSoftwarePlatform/rocBLAS ; cd rocBLAS ; git reset --hard 740602e3f3c21886dbf3159d892426842c52b60f ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocblas-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS ; cd hipBLAS ; git reset --hard da8f5a2fc8673896040349bf3853fc9cccae33d9 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipblas-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipBLAS ; cd hipBLAS ; git reset --hard 172deed6d88861ca4e07054cb38b7371f1f02457 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipblas-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND ; cd rocRAND ; git reset --hard b9f838b78c6a8d034ce31c700ab44b6b2ddc87f6 ; rm -rf build ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. ; make -j$(nproc) 2>&1 | tee rocrand-build.log
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocRAND ; cd rocRAND ; git reset --hard 448c673d94e542d49e771208f3721d849ba22fa7 ; rm -rf build ; mkdir build ; cd build ; CXX=/opt/rocm/hcc/bin/hcc  cmake -DBUILD_TEST=ON -DBUILD_BENCHMARK=ON -DBUILD_CRUSH_TEST=ON -DDEPENDENCIES_FORCE_DOWNLOAD=ON ../. ; make -j$(nproc) 2>&1 | tee rocrand-build.log
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT ; cd rocFFT ; git reset --hard ebb61cffc625e1bb8d36a4128846da663789fce9 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocfft-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocFFT ; cd rocFFT ; git reset --hard 0c6af4840f28e576dc3590c34160160b096f3bd6 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocfft-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard 3f9898495459c6984cb6b8bd35b3676f1c3e9878 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSPARSE ; cd /root/driver/rocSPARSE ; git reset --hard 636fb217b82ffa5a8de7a6d0f13ea5a27c9637d8 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocsparse-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /root/driver/hipSPARSE ; git reset --hard 037a8b67a82230571545f1353c2e21aaf8875edc ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipsparse-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipSPARSE ; cd /root/driver/hipSPARSE ; git reset --hard 3085fe5f60ca35237b001f97f31acd2f2c0fcef9 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee hipsparse-build.log ; apt-get clean all
 
 WORKDIR /root/driver
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION ; cd /root/driver/rocALUTION ; git reset --hard 8fd80ce877e063e0c176c49de8599769ef0d2c52 ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocalution-build.log ; apt-get clean all
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocALUTION ; cd /root/driver/rocALUTION ; git reset --hard 7220da118dd7dc452ad5d82dfc57a8891416fe4b ; dos2unix install.sh ; ./install.sh -cd 2>&1 | tee rocalution-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard 957b1e9f9caa89d8ac259f56d10e47bb4d4898e6 ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocTHRUST.git ; cd rocTHRUST ; git reset --hard c4b532816c18e9822d89b2c6da582b90bb5c2d3d ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee rocthrust-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 6ee0aed4ba828611791800c136d3c95e471f7c6e ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/hipCUB.git ; cd hipCUB ; git reset --hard 40e1d662cdec4334f493aa9bc4a23d91540d069d ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee hipcub-build.log ; apt-get clean all
 
-RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard 94923ca5aa5b49723f121752ad8bcc70450d6527 ; 
+RUN git clone -b master https://github.com/ROCmSoftwarePlatform/rocSOLVER.git ; cd rocSOLVER ; git reset --hard aa6ad2e9086725b5086f95e71443680b3cd869c1 ; 
 
 #dos2unix install ; ./install -ict 2>&1 | tee rocsolver-build.log ; apt-get clean all
 
@@ -111,10 +111,10 @@ RUN rm -rf half.hpp ; wget https://phoenixnap.dl.sourceforge.net/project/half/ha
 RUN ln -s /usr/include/x86_64-linux-gnu/openssl/opensslconf.h /usr/include/openssl
 
 WORKDIR /root/driver
-RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm ; cd miopengemm ; git reset --hard 6275a879995b58a6e0b8cca7b1ad8421a5e02ade ; rm -rf build ; mkdir build ; cd build ; cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. ;  make -j$(nproc)
+RUN git clone https://github.com/ROCmSoftwarePlatform/miopengemm ; cd miopengemm ; git reset --hard b51a12523676451bf38bfcf0506a0745e80ac64f ; rm -rf build ; mkdir build ; cd build ; cmake -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. ;  make -j$(nproc)
 
 WORKDIR /root/driver
-RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard 069d871aed4a9a2392b694ed7e05000a133ec7a6
+RUN sudo apt-get install libsqlite3-dev ; git clone -b develop https://streamhsa:AH64_uh1@github.com/AMDComputeLibraries/MLOpen.git ; cd MLOpen ; git reset --hard e489cf57be2e06eda875c53daee7b15136b6eaec
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/rccl/lib
 ENV PATH=/opt/rocm/bin:$PATH
